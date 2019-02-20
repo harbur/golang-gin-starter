@@ -1,0 +1,12 @@
+docker:
+  - path: Dockerfile
+    context: .
+    image: docker.k8s.harbur.io/golang-example
+    tags:
+      - ${GIT_BRANCH}
+      - ${GIT_COMMIT_SHORT}
+      - ${GIT_BRANCH}-${BUILD_NUMBER}
+#environments:
+  #- name: golang-example
+    #namespace: default
+    #path: charts/golang-example
