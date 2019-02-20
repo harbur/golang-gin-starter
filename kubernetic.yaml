@@ -8,5 +8,5 @@ docker:
       - ${GIT_BRANCH}-${BUILD_NUMBER}
 environments:
   - name: golang-example
-    namespace: default
+    namespace: demo
     path: charts/golang-example
