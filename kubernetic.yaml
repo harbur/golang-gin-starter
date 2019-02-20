@@ -6,7 +6,7 @@ docker:
       - ${GIT_BRANCH}
       - ${GIT_COMMIT_SHORT}
       - ${GIT_BRANCH}-${BUILD_NUMBER}
-#environments:
-  #- name: golang-example
-    #namespace: default
-    #path: charts/golang-example
+environments:
+  - name: golang-example
+    namespace: default
+    path: charts/golang-example
