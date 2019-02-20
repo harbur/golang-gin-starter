@@ -15,7 +15,12 @@ func main() {
 
 	r := mux.NewRouter()
 	r.Handle("/metrics", promhttp.Handler())
+        r.HandleFunc("/", handlerOK).Methods("GET")
 
 	// Listen and Serve
 	log.Fatal(http.ListenAndServe(":8080", r))
+}
+
+func handlerOK(w http.ResponseWriter, r *http.Request) {
+  w.Write([]byte("OK"))
 }
