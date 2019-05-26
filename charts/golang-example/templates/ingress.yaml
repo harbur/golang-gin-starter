@@ -1,13 +1,13 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "golang-example.fullname" . -}}
+{{- $fullName := include "golang-demo.fullname" . -}}
 {{- $ingressPaths := .Values.ingress.paths -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
-    app.kubernetes.io/name: {{ include "golang-example.name" . }}
-    helm.sh/chart: {{ include "golang-example.chart" . }}
+    app.kubernetes.io/name: {{ include "golang-demo.name" . }}
+    helm.sh/chart: {{ include "golang-demo.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
   {{- with .Values.ingress.annotations }}

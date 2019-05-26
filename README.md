@@ -1,2 +1,2 @@
-# golang-example
+# Golang Demo
 

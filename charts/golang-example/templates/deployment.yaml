@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "golang-example.fullname" . }}
+  name: {{ include "golang-demo.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "golang-example.name" . }}
-    helm.sh/chart: {{ include "golang-example.chart" . }}
+    app.kubernetes.io/name: {{ include "golang-demo.name" . }}
+    helm.sh/chart: {{ include "golang-demo.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "golang-example.name" . }}
+      app.kubernetes.io/name: {{ include "golang-demo.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
@@ -19,7 +19,7 @@ spec:
         prometheus.io/port: "8080"
         prometheus.io/scrape: "true"
       labels:
-        app.kubernetes.io/name: {{ include "golang-example.name" . }}
+        app.kubernetes.io/name: {{ include "golang-demo.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:

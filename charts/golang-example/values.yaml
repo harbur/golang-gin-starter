@@ -1,11 +1,11 @@
-# Default values for golang-example.
+# Default values for golang-demo.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: docker.pro.harbur.io/golang-example
+  repository: docker.pro.harbur.io/golang-demo
   tag: master
   pullPolicy: Always
 
