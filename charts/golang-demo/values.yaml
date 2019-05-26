@@ -13,21 +13,21 @@ nameOverride: ""
 fullnameOverride: ""
 
 service:
-  type: ClusterIP
+  type: NodePort
   port: 80
 
 ingress:
-  enabled: false
+  enabled: true
   annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
   paths: []
   hosts:
-    - chart-example.local
+    - golang-demo.pro.harbur.io
   tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+   - secretName: golang-demo-tls
+     hosts:
+       - golang-demo.pro.harbur.io
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
