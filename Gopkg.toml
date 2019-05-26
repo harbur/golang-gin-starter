@@ -27,7 +27,15 @@
 
 [[constraint]]
   name = "github.com/gorilla/mux"
-  version = "1.7.0"
+  version = "1.7.2"
+
+[[constraint]]
+  name = "github.com/prometheus/client_golang"
+  version = "0.9.3"
+
+[[constraint]]
+  name = "github.com/sirupsen/logrus"
+  version = "1.4.2"
 
 [prune]
   go-tests = true
