@@ -24,7 +24,7 @@ ingress:
   paths: []
   hosts:
     - golang-demo.pro.harbur.io
-  tls: []
+  tls:
    - secretName: golang-demo-tls
      hosts:
        - golang-demo.pro.harbur.io
