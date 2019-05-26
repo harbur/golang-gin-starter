@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"os"
 
 	log "github.com/sirupsen/logrus"
 
@@ -10,6 +11,10 @@ import (
 )
 
 func main() {
+	// Use JSON Formatter when deployed on Kubernetes
+	if os.Getenv("KUBERNETES_SERVICE_HOST") != "" {
+		log.SetFormatter(&log.JSONFormatter{})
+	}
 	log.SetLevel(log.DebugLevel)
 	log.Info("starting server")
 
@@ -22,6 +27,6 @@ func main() {
 }
 
 func handlerOK(w http.ResponseWriter, r *http.Request) {
-	log.Info("Received request: ", r.URL.Path)
+	log.WithFields(log.Fields{"path": r.URL.Path}).Info("Received request")
 	w.Write([]byte(r.URL.Path))
 }
