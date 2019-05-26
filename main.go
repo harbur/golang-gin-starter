@@ -22,5 +22,6 @@ func main() {
 }
 
 func handlerOK(w http.ResponseWriter, r *http.Request) {
+	log.Info("Received request: ", r.URL.Path)
 	w.Write([]byte(r.URL.Path))
 }
