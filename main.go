@@ -28,6 +28,6 @@ func main() {
 }
 
 func handlerOK(w http.ResponseWriter, r *http.Request) {
-	log.WithFields(log.Fields{"path": r.URL.Path}).Info("Received request")
+	log.WithField("path", r.URL.Path).Info("Received request")
 	w.Write([]byte(r.URL.Path))
 }
