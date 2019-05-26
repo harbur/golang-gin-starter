@@ -16,6 +16,7 @@ func main() {
 		log.SetFormatter(&log.JSONFormatter{})
 	}
 	log.SetLevel(log.DebugLevel)
+	log.SetOutput(os.Stdout)
 	log.Info("starting server")
 
 	r := mux.NewRouter()
