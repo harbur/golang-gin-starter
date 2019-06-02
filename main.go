@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 	"os"
+	"strings"
 
 	log "github.com/sirupsen/logrus"
 
@@ -31,7 +32,7 @@ func main() {
 	m.Handle("/metrics", promhttp.Handler())
 	m.Handle("/healthz", http.HandlerFunc(healthCheck)).Methods("GET")
 	m.Handle("/app/{rest:.*}", promhttp.InstrumentHandlerCounter(appHTTPRequestsTotal, http.HandlerFunc(handlerOK))).Methods("GET")
-	prometheus.MustRegister(appHTTPRequestsTotal)
+	prometheus.Register(appHTTPRequestsTotal)
 
 	// Listen and Serve
 	log.Fatal(http.ListenAndServe(":8080", m))
@@ -43,5 +44,10 @@ func healthCheck(w http.ResponseWriter, r *http.Request) {
 
 func handlerOK(w http.ResponseWriter, r *http.Request) {
 	log.WithField("path", r.URL.Path).Info("Received request")
+
+	if strings.HasPrefix(r.URL.Path, "/app/error") {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
 	w.Write([]byte(r.URL.Path))
 }
