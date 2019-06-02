@@ -12,15 +12,8 @@ import (
 )
 
 var (
-	version = prometheus.NewGauge(prometheus.GaugeOpts{
-		Name: "version",
-		Help: "Version information about this binary",
-		ConstLabels: map[string]string{
-			"version": "v0.1.0",
-		},
-	})
-	httpRequestsTotal = prometheus.NewCounterVec(prometheus.CounterOpts{
-		Name: "http_requests_total",
+	appHTTPRequestsTotal = prometheus.NewCounterVec(prometheus.CounterOpts{
+		Name: "app_http_requests_total",
 		Help: "Count of all HTTP requests",
 	}, []string{"code", "method"})
 )
@@ -33,16 +26,19 @@ func main() {
 	log.SetLevel(log.DebugLevel)
 	log.SetOutput(os.Stdout)
 	log.Info("starting server")
-	r := prometheus.NewRegistry()
-	r.MustRegister(httpRequestsTotal)
-	r.MustRegister(version)
 
 	m := mux.NewRouter()
-	m.Handle("/metrics", promhttp.HandlerFor(r, promhttp.HandlerOpts{}))
-	m.Handle("/{rest:.*}", promhttp.InstrumentHandlerCounter(httpRequestsTotal, http.HandlerFunc(handlerOK))).Methods("GET")
+	m.Handle("/metrics", promhttp.Handler())
+	m.Handle("/healthz", http.HandlerFunc(healthCheck)).Methods("GET")
+	m.Handle("/{rest:.*}", promhttp.InstrumentHandlerCounter(appHTTPRequestsTotal, http.HandlerFunc(handlerOK))).Methods("GET")
+	prometheus.MustRegister(appHTTPRequestsTotal)
 
 	// Listen and Serve
 	log.Fatal(http.ListenAndServe(":8080", m))
+}
+
+func healthCheck(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("OK"))
 }
 
 func handlerOK(w http.ResponseWriter, r *http.Request) {
