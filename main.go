@@ -30,7 +30,7 @@ func main() {
 	m := mux.NewRouter()
 	m.Handle("/metrics", promhttp.Handler())
 	m.Handle("/healthz", http.HandlerFunc(healthCheck)).Methods("GET")
-	m.Handle("/{rest:.*}", promhttp.InstrumentHandlerCounter(appHTTPRequestsTotal, http.HandlerFunc(handlerOK))).Methods("GET")
+	m.Handle("/app/{rest:.*}", promhttp.InstrumentHandlerCounter(appHTTPRequestsTotal, http.HandlerFunc(handlerOK))).Methods("GET")
 	prometheus.MustRegister(appHTTPRequestsTotal)
 
 	// Listen and Serve
