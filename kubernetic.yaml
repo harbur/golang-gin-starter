@@ -1,7 +1,8 @@
 docker:
   - path: Dockerfile
     context: .
-    image: eu.gcr.io/woven-computing-234012/golang-demo
+    #image: eu.gcr.io/woven-computing-234012/golang-demo
+    image: docker.pro.harbur.io/golang-demo
     tags:
       - ${GIT_BRANCH}
       - ${GIT_COMMIT_SHORT}
