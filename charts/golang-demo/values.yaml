@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: docker.pro.harbur.io/golang-demo
+  repository: eu.gcr.io/woven-computing-234012/golang-demo
   tag: master
   pullPolicy: Always
 
