@@ -6,6 +6,8 @@ images:
       - ${GIT_BRANCH}
       - ${GIT_COMMIT_SHORT}
       - ${GIT_BRANCH}-${BUILD_NUMBER}
+charts:
+  - charts/golang-demo
 environments:
   - name: golang-demo
     namespace: kc-demo
