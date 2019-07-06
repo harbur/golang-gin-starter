@@ -8,7 +8,7 @@ images:
       - ${GIT_BRANCH}-${BUILD_NUMBER}
 charts:
   - charts/golang-demo
-environments:
+releases:
   - name: golang-demo
     namespace: kc-demo
     path: charts/golang-demo
