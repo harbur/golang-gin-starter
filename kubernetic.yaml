@@ -1,6 +1,5 @@
 images:
-  golang:
-    path: Dockerfile
+  - path: Dockerfile
     context: .
     image: woven-computing-234012/golang-demo
     tags:
