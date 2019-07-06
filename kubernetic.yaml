@@ -1,7 +1,7 @@
 images:
-  - path: Dockerfile
+  - name: woven-computing-234012/golang-demo
+    path: Dockerfile
     context: .
-    image: woven-computing-234012/golang-demo
     tags:
       - ${GIT_BRANCH}
       - ${GIT_COMMIT_SHORT}
