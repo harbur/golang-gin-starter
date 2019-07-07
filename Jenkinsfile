@@ -1,3 +1,3 @@
 #!groovy
-@Library("kubernetic-pipeline@feature/use-classes") _
+@Library("kubernetic-pipeline") _
 kubernetic{}
