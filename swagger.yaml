@@ -1,0 +1,176 @@
+swagger: "2.0"
+info:
+  description: Golang Starter
+  title: Golang Starter
+  version: 1.0.0
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /api/healthz:
+    get:
+      tags:
+        - healthz
+      operationId: healthz
+      responses:
+        200:
+          $ref: "#/responses/healthz"
+  /api/movies:
+    get:
+      tags:
+        - movies
+      operationId: getMovies
+      responses:
+        200:
+          $ref: "#/responses/movies"
+        409:
+          $ref: "#/responses/conflict"
+        500:
+          $ref: "#/responses/internal"
+    post:
+      tags:
+        - movies
+      operationId: postMovie
+      parameters:
+        - $ref: "#/parameters/movie"
+      responses:
+        200:
+          $ref: "#/responses/movie"
+        409:
+          $ref: "#/responses/conflict"
+        500:
+          $ref: "#/responses/internal"
+  /api/movies/{id}:
+    parameters:
+      - $ref: "#/parameters/id"
+    get:
+      tags:
+        - movies
+      operationId: getMovie
+      responses:
+        200:
+          $ref: "#/responses/movie"
+        404:
+          $ref: "#/responses/notfound"
+        409:
+          $ref: "#/responses/conflict"
+        500:
+          $ref: "#/responses/internal"
+    put:
+      tags:
+        - movies
+      operationId: putMovie
+      parameters:
+        - $ref: "#/parameters/movie"
+      responses:
+        200:
+          $ref: "#/responses/movie"
+        404:
+          $ref: "#/responses/notfound"
+        409:
+          $ref: "#/responses/conflict"
+        500:
+          $ref: "#/responses/internal"
+    delete:
+      tags:
+        - movies
+      operationId: deleteMovie
+      responses:
+        200:
+          $ref: "#/responses/ok"
+        404:
+          $ref: "#/responses/notfound"
+        409:
+          $ref: "#/responses/conflict"
+        500:
+          $ref: "#/responses/internal"
+definitions:
+  movies:
+    type: array
+    items:
+      $ref: '#/definitions/movie'
+  movie:    
+    type: object
+    required:
+      - name
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+  error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int64
+      message:
+        type: string
+  healthz:
+    type: object
+    required:
+      - buildInfo
+    properties:
+      buildInfo:
+        type: object
+        $ref: "#/definitions/buildInfo"
+  buildInfo:
+    type: object
+    required:
+      - buildDate
+      - gitBranch
+      - gitCommit
+      - gitState
+      - gitSummary
+    properties:
+      buildDate:
+        type: string
+      gitBranch:
+        type: string
+      gitCommit:
+        type: string
+      gitState:
+        type: string
+      gitSummary:
+        type: string
+parameters:
+  id:
+    name: id
+    in: path
+    type: integer
+    required: true
+    description: Identifier
+  movie:
+    name: movie
+    in: body
+    required: true
+    schema:
+      $ref: '#/definitions/movie'
+responses:
+  ok:
+    description: OK
+  healthz:
+    description: OK
+    schema:
+      $ref: "#/definitions/healthz"
+  movie:
+    schema:
+      $ref: "#/definitions/movie"
+    description: OK
+  movies:
+    schema:
+      $ref: "#/definitions/movies"
+    description: OK
+  conflict:
+    description: Conflict
+    schema:
+      $ref: "#/definitions/error"
+  notfound:
+    description: Not Found
+    schema:
+      $ref: "#/definitions/error"
+  internal:
+    description: Internal Server Error
+    schema:
+      $ref: "#/definitions/error"
