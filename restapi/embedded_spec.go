@@ -31,19 +31,6 @@ func init() {
     "version": "1.0.0"
   },
   "paths": {
-    "/api/healthz": {
-      "get": {
-        "tags": [
-          "healthz"
-        ],
-        "operationId": "healthz",
-        "responses": {
-          "200": {
-            "$ref": "#/responses/healthz"
-          }
-        }
-      }
-    },
     "/api/movies": {
       "get": {
         "tags": [
@@ -156,6 +143,19 @@ func init() {
           "$ref": "#/parameters/id"
         }
       ]
+    },
+    "/healthz": {
+      "get": {
+        "tags": [
+          "healthz"
+        ],
+        "operationId": "healthz",
+        "responses": {
+          "200": {
+            "$ref": "#/responses/healthz"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -304,22 +304,6 @@ func init() {
     "version": "1.0.0"
   },
   "paths": {
-    "/api/healthz": {
-      "get": {
-        "tags": [
-          "healthz"
-        ],
-        "operationId": "healthz",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/healthz"
-            }
-          }
-        }
-      }
-    },
     "/api/movies": {
       "get": {
         "tags": [
@@ -497,6 +481,22 @@ func init() {
           "required": true
         }
       ]
+    },
+    "/healthz": {
+      "get": {
+        "tags": [
+          "healthz"
+        ],
+        "operationId": "healthz",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/healthz"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {

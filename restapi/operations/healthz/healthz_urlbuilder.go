@@ -35,7 +35,7 @@ func (o *HealthzURL) SetBasePath(bp string) {
 func (o *HealthzURL) Build() (*url.URL, error) {
 	var _result url.URL
 
-	var _path = "/api/healthz"
+	var _path = "/healthz"
 
 	_basePath := o._basePath
 	_result.Path = golangswaggerpaths.Join(_basePath, _path)

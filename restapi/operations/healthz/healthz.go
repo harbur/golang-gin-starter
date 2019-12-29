@@ -29,7 +29,7 @@ func NewHealthz(ctx *middleware.Context, handler HealthzHandler) *Healthz {
 	return &Healthz{Context: ctx, Handler: handler}
 }
 
-/*Healthz swagger:route GET /api/healthz healthz healthz
+/*Healthz swagger:route GET /healthz healthz healthz
 
 Healthz healthz API
 

@@ -304,7 +304,7 @@ func (o *GolangStarterAPI) initHandlerCache() {
 	if o.handlers["GET"] == nil {
 		o.handlers["GET"] = make(map[string]http.Handler)
 	}
-	o.handlers["GET"]["/api/healthz"] = healthz.NewHealthz(o.context, o.HealthzHealthzHandler)
+	o.handlers["GET"]["/healthz"] = healthz.NewHealthz(o.context, o.HealthzHealthzHandler)
 
 	if o.handlers["POST"] == nil {
 		o.handlers["POST"] = make(map[string]http.Handler)
