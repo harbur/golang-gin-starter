@@ -34,7 +34,7 @@ func PostMovie(params movies.PostMovieParams) middleware.Responder {
 		return utils.ErrorHandler(err)
 	}
 
-	return movies.NewPostMovieOK().WithPayload(&response)
+	return movies.NewPostMovieCreated().WithPayload(&response)
 }
 
 // PutMovie puts a movie

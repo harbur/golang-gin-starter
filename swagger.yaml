@@ -35,7 +35,7 @@ paths:
       parameters:
         - $ref: "#/parameters/movie"
       responses:
-        200:
+        201:
           $ref: "#/responses/movie"
         409:
           $ref: "#/responses/conflict"

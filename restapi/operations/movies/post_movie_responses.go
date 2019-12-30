@@ -13,14 +13,14 @@ import (
 	models "github.com/harbur/golang-starter/models"
 )
 
-// PostMovieOKCode is the HTTP code returned for type PostMovieOK
-const PostMovieOKCode int = 200
+// PostMovieCreatedCode is the HTTP code returned for type PostMovieCreated
+const PostMovieCreatedCode int = 201
 
-/*PostMovieOK OK
+/*PostMovieCreated OK
 
-swagger:response postMovieOK
+swagger:response postMovieCreated
 */
-type PostMovieOK struct {
+type PostMovieCreated struct {
 
 	/*
 	  In: Body
@@ -28,27 +28,27 @@ type PostMovieOK struct {
 	Payload *models.Movie `json:"body,omitempty"`
 }
 
-// NewPostMovieOK creates PostMovieOK with default headers values
-func NewPostMovieOK() *PostMovieOK {
+// NewPostMovieCreated creates PostMovieCreated with default headers values
+func NewPostMovieCreated() *PostMovieCreated {
 
-	return &PostMovieOK{}
+	return &PostMovieCreated{}
 }
 
-// WithPayload adds the payload to the post movie o k response
-func (o *PostMovieOK) WithPayload(payload *models.Movie) *PostMovieOK {
+// WithPayload adds the payload to the post movie created response
+func (o *PostMovieCreated) WithPayload(payload *models.Movie) *PostMovieCreated {
 	o.Payload = payload
 	return o
 }
 
-// SetPayload sets the payload to the post movie o k response
-func (o *PostMovieOK) SetPayload(payload *models.Movie) {
+// SetPayload sets the payload to the post movie created response
+func (o *PostMovieCreated) SetPayload(payload *models.Movie) {
 	o.Payload = payload
 }
 
 // WriteResponse to the client
-func (o *PostMovieOK) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
+func (o *PostMovieCreated) WriteResponse(rw http.ResponseWriter, producer runtime.Producer) {
 
-	rw.WriteHeader(200)
+	rw.WriteHeader(201)
 	if o.Payload != nil {
 		payload := o.Payload
 		if err := producer.Produce(rw, payload); err != nil {

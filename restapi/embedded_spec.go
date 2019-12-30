@@ -60,7 +60,7 @@ func init() {
           }
         ],
         "responses": {
-          "200": {
+          "201": {
             "$ref": "#/responses/movie"
           },
           "409": {
@@ -347,7 +347,7 @@ func init() {
           }
         ],
         "responses": {
-          "200": {
+          "201": {
             "description": "OK",
             "schema": {
               "$ref": "#/definitions/movie"
