@@ -7,9 +7,17 @@ consumes:
 - application/json
 produces:
 - application/json
+tags:
+  - name: healthz
+    description: Health checks
+  - name: movies
+    description: Manage Movies
 paths:
   /healthz:
     get:
+      summary: Returns a health check
+      description: |-
+        Returns status code 200 when service is online.
       tags:
         - healthz
       operationId: healthz

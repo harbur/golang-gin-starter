@@ -31,7 +31,11 @@ func NewHealthz(ctx *middleware.Context, handler HealthzHandler) *Healthz {
 
 /*Healthz swagger:route GET /healthz healthz healthz
 
-Healthz healthz API
+Returns a health check
+
+Returns 200 status code when service is up.
+It is used to identify when service is ready to receive traffic.
+It returns build version info.
 
 */
 type Healthz struct {

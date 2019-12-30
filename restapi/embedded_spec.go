@@ -146,9 +146,11 @@ func init() {
     },
     "/healthz": {
       "get": {
+        "description": "Returns 200 status code when service is up.\nIt is used to identify when service is ready to receive traffic.\nIt returns build version info.",
         "tags": [
           "healthz"
         ],
+        "summary": "Returns a health check",
         "operationId": "healthz",
         "responses": {
           "200": {
@@ -288,7 +290,17 @@ func init() {
     "ok": {
       "description": "OK"
     }
-  }
+  },
+  "tags": [
+    {
+      "description": "Health checks",
+      "name": "healthz"
+    },
+    {
+      "description": "Manage Movies",
+      "name": "movies"
+    }
+  ]
 }`))
 	FlatSwaggerJSON = json.RawMessage([]byte(`{
   "consumes": [
@@ -484,9 +496,11 @@ func init() {
     },
     "/healthz": {
       "get": {
+        "description": "Returns 200 status code when service is up.\nIt is used to identify when service is ready to receive traffic.\nIt returns build version info.",
         "tags": [
           "healthz"
         ],
+        "summary": "Returns a health check",
         "operationId": "healthz",
         "responses": {
           "200": {
@@ -629,6 +643,16 @@ func init() {
     "ok": {
       "description": "OK"
     }
-  }
+  },
+  "tags": [
+    {
+      "description": "Health checks",
+      "name": "healthz"
+    },
+    {
+      "description": "Manage Movies",
+      "name": "movies"
+    }
+  ]
 }`))
 }
