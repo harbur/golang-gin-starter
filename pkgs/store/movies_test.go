@@ -28,7 +28,7 @@ func TestCreateMovieOK(t *testing.T) {
 	assert.Equal(t, movie, stored, "the movie is not stored properly to db")
 }
 
-// TestCreateMovieOK creates a movie with invalid id
+// TestCreateMovieErrorInvalidID creates a movie with invalid id
 func TestCreateMovieErrorInvalidID(t *testing.T) {
 	// Prepare
 	Connect()
@@ -134,7 +134,7 @@ func TestListMoviesOK(t *testing.T) {
 		Name: utils.StrPtr("godfather"),
 	}
 
-	// movies liest is empty
+	// movies list is empty
 	movies := ListMovies()
 	assert.Len(t, movies, 0)
 

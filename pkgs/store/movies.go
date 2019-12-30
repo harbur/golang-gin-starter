@@ -25,14 +25,14 @@ func CreateMovie(movie models.Movie) (models.Movie, error) {
 	return movie, err
 }
 
-// GetMovie gets a movies
+// GetMovie gets a movie
 func GetMovie(id int64) (models.Movie, error) {
 	var movie models.Movie
 	err := db.Where("ID = ?", id).Find(&movie).Error
 	return movie, err
 }
 
-// UpdateMovie updates a movies
+// UpdateMovie updates a movie
 func UpdateMovie(id int64, movie models.Movie) (models.Movie, error) {
 	// make sure payload contains correct id
 	if id != movie.ID {
