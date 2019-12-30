@@ -31,7 +31,9 @@ func NewPutMovie(ctx *middleware.Context, handler PutMovieHandler) *PutMovie {
 
 /*PutMovie swagger:route PUT /api/movies/{id} movies putMovie
 
-PutMovie put movie API
+Update movie
+
+Updates a movie.
 
 */
 type PutMovie struct {

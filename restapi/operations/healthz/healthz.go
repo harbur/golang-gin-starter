@@ -33,9 +33,7 @@ func NewHealthz(ctx *middleware.Context, handler HealthzHandler) *Healthz {
 
 Returns a health check
 
-Returns 200 status code when service is up.
-It is used to identify when service is ready to receive traffic.
-It returns build version info.
+Returns status code 200 when service is online.
 
 */
 type Healthz struct {

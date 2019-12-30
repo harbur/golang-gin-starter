@@ -31,7 +31,9 @@ func NewPostMovie(ctx *middleware.Context, handler PostMovieHandler) *PostMovie 
 
 /*PostMovie swagger:route POST /api/movies movies postMovie
 
-PostMovie post movie API
+Create movie
+
+Creates a movie.
 
 */
 type PostMovie struct {

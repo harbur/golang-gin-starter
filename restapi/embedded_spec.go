@@ -33,9 +33,11 @@ func init() {
   "paths": {
     "/api/movies": {
       "get": {
+        "description": "Lists all movies.",
         "tags": [
           "movies"
         ],
+        "summary": "List movies",
         "operationId": "getMovies",
         "responses": {
           "200": {
@@ -50,9 +52,11 @@ func init() {
         }
       },
       "post": {
+        "description": "Creates a movie.",
         "tags": [
           "movies"
         ],
+        "summary": "Create movie",
         "operationId": "postMovie",
         "parameters": [
           {
@@ -74,9 +78,11 @@ func init() {
     },
     "/api/movies/{id}": {
       "get": {
+        "description": "Gets a movie.",
         "tags": [
           "movies"
         ],
+        "summary": "Get movie",
         "operationId": "getMovie",
         "responses": {
           "200": {
@@ -94,9 +100,11 @@ func init() {
         }
       },
       "put": {
+        "description": "Updates a movie.",
         "tags": [
           "movies"
         ],
+        "summary": "Update movie",
         "operationId": "putMovie",
         "parameters": [
           {
@@ -119,9 +127,11 @@ func init() {
         }
       },
       "delete": {
+        "description": "Deletes a movie.",
         "tags": [
           "movies"
         ],
+        "summary": "Delete movie",
         "operationId": "deleteMovie",
         "responses": {
           "200": {
@@ -146,7 +156,7 @@ func init() {
     },
     "/healthz": {
       "get": {
-        "description": "Returns 200 status code when service is up.\nIt is used to identify when service is ready to receive traffic.\nIt returns build version info.",
+        "description": "Returns status code 200 when service is online.",
         "tags": [
           "healthz"
         ],
@@ -318,9 +328,11 @@ func init() {
   "paths": {
     "/api/movies": {
       "get": {
+        "description": "Lists all movies.",
         "tags": [
           "movies"
         ],
+        "summary": "List movies",
         "operationId": "getMovies",
         "responses": {
           "200": {
@@ -344,9 +356,11 @@ func init() {
         }
       },
       "post": {
+        "description": "Creates a movie.",
         "tags": [
           "movies"
         ],
+        "summary": "Create movie",
         "operationId": "postMovie",
         "parameters": [
           {
@@ -382,9 +396,11 @@ func init() {
     },
     "/api/movies/{id}": {
       "get": {
+        "description": "Gets a movie.",
         "tags": [
           "movies"
         ],
+        "summary": "Get movie",
         "operationId": "getMovie",
         "responses": {
           "200": {
@@ -414,9 +430,11 @@ func init() {
         }
       },
       "put": {
+        "description": "Updates a movie.",
         "tags": [
           "movies"
         ],
+        "summary": "Update movie",
         "operationId": "putMovie",
         "parameters": [
           {
@@ -456,9 +474,11 @@ func init() {
         }
       },
       "delete": {
+        "description": "Deletes a movie.",
         "tags": [
           "movies"
         ],
+        "summary": "Delete movie",
         "operationId": "deleteMovie",
         "responses": {
           "200": {
@@ -496,7 +516,7 @@ func init() {
     },
     "/healthz": {
       "get": {
-        "description": "Returns 200 status code when service is up.\nIt is used to identify when service is ready to receive traffic.\nIt returns build version info.",
+        "description": "Returns status code 200 when service is online.",
         "tags": [
           "healthz"
         ],

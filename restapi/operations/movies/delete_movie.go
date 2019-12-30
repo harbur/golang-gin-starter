@@ -31,7 +31,9 @@ func NewDeleteMovie(ctx *middleware.Context, handler DeleteMovieHandler) *Delete
 
 /*DeleteMovie swagger:route DELETE /api/movies/{id} movies deleteMovie
 
-DeleteMovie delete movie API
+Delete movie
+
+Deletes a movie.
 
 */
 type DeleteMovie struct {

@@ -31,7 +31,9 @@ func NewGetMovies(ctx *middleware.Context, handler GetMoviesHandler) *GetMovies 
 
 /*GetMovies swagger:route GET /api/movies movies getMovies
 
-GetMovies get movies API
+List movies
+
+Lists all movies.
 
 */
 type GetMovies struct {
