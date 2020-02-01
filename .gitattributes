@@ -5,3 +5,8 @@ vendor/** -diff
 models/** -diff
 restapi/operations/** -diff
 restapi/embedded_spec.go -diff
+
+# Configure SOPS encrypted secrets differ
+secrets.yaml diff=sopsdiffer
+secrets.*.yaml diff=sopsdiffer
+
