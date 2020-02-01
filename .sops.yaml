@@ -1,0 +1,5 @@
+---
+creation_rules:
+  # Encrypt using GCP KMS
+   - gcp_kms: projects/woven-computing-234012/locations/global/keyRings/helm/cryptoKeys/helm
+

@@ -12,3 +12,5 @@ releases:
   - name: golang-demo
     namespace: kc-demo
     path: charts/golang-demo
+    values:
+    - releases/secrets.yaml
