@@ -1,8 +1,8 @@
 # Go parameters
 GOCMD=go
 GOVVVCMD=govvv
-SRC=./cmd/golang-starter-server
-APP=golang-starter-server
+SRC=./cmd/golang-starter
+APP=golang-starter
 ALL=./...
 GOINSTALL=$(GOVVVCMD) install -pkg github.com/harbur/golang-starter/pkgs/apis
 GOCLEAN=$(GOCMD) clean

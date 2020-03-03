@@ -1,0 +1,19 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Golang Starter.",
+        "title": "Golang Starter",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support",
+            "email": "contact@harbur.io"
+        },
+        "license": {
+            "name": "MIT",
+            "url": "https://github.com/harbur/golang-starter/blob/master/LICENSE"
+        },
+        "version": "1.0.0"
+    },
+    "basePath": "/api/v1",
+    "paths": {}
+}

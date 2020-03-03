@@ -6,6 +6,8 @@ import (
 	"crypto/tls"
 	"net/http"
 
+	swaggerFiles "github.com/swaggo/files"
+
 	errors "github.com/go-openapi/errors"
 	runtime "github.com/go-openapi/runtime"
 
@@ -74,5 +76,5 @@ func setupMiddlewares(handler http.Handler) http.Handler {
 // The middleware configuration happens before anything, this middleware also applies to serving the swagger.json document.
 // So this is a good place to plug in a panic handling middleware, logging and metrics
 func setupGlobalMiddleware(handler http.Handler) http.Handler {
-	return middlewares.SwaggerUIMiddleware(handler)
+	return middlewares.SwaggerUIMiddleware(swaggerFiles.Handler)
 }
