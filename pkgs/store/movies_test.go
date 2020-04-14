@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/harbur/golang-gin-starter/models"
+	"github.com/harbur/golang-gin-starter/pkgs/models"
 	"github.com/harbur/golang-gin-starter/pkgs/utils"
 )
 

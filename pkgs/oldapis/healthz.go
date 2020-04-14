@@ -2,7 +2,7 @@ package apis
 
 import (
 	"github.com/go-openapi/runtime/middleware"
-	"github.com/harbur/golang-gin-starter/models"
+	"github.com/harbur/golang-gin-starter/pkgs/models"
 	"github.com/harbur/golang-gin-starter/restapi/operations/healthz"
 )
 

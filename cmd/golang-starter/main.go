@@ -38,6 +38,7 @@ func main() {
 	store.Connect()
 	r.GET("/api/movies", apis.GetMovies)
 	r.POST("/api/movies", apis.PostMovie)
+	r.GET("/api/movies/:id", apis.GetMovie)
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	r.Run(fmt.Sprintf(":%v", 8080))
 

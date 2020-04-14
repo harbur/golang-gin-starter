@@ -1,4 +1,16 @@
 basePath: /api/
+definitions:
+  models.Movie:
+    properties:
+      id:
+        description: id
+        type: integer
+      name:
+        description: |-
+          name
+          Required: true
+        type: string
+    type: object
 info:
   contact:
     email: contact@harbur.io
@@ -24,6 +36,25 @@ paths:
           schema:
             type: string
       summary: lists movies
+    post:
+      consumes:
+      - application/json
+      description: posts a movie
+      parameters:
+      - description: Movie
+        in: body
+        name: movie
+        required: true
+        schema:
+          $ref: '#/definitions/models.Movie'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: posts a movie
   /movies/{id}:
     get:
       consumes:
@@ -43,16 +74,4 @@ paths:
           schema:
             type: string
       summary: gets a movie
-    post:
-      consumes:
-      - application/json
-      description: posts a movie
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: ok
-          schema:
-            type: string
-      summary: posts a movie
 swagger: "2.0"

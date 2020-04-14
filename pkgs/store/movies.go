@@ -3,7 +3,7 @@ package store
 import (
 	"errors"
 
-	"github.com/harbur/golang-gin-starter/models"
+	"github.com/harbur/golang-gin-starter/pkgs/models"
 	// sqlite
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )

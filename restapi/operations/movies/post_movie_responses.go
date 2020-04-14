@@ -10,7 +10,7 @@ import (
 
 	"github.com/go-openapi/runtime"
 
-	models "github.com/harbur/golang-gin-starter/models"
+	models "github.com/harbur/golang-gin-starter/pkgs/models"
 )
 
 // PostMovieCreatedCode is the HTTP code returned for type PostMovieCreated

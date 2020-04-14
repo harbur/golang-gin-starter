@@ -3,7 +3,7 @@ package apis
 import (
 	"testing"
 
-	"github.com/harbur/golang-gin-starter/models"
+	"github.com/harbur/golang-gin-starter/pkgs/models"
 	"github.com/harbur/golang-gin-starter/pkgs/store"
 	"github.com/harbur/golang-gin-starter/pkgs/utils"
 	"github.com/harbur/golang-gin-starter/restapi/operations/movies"

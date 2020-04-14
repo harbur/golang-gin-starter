@@ -6,7 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/harbur/golang-gin-starter/models"
+	"github.com/harbur/golang-gin-starter/pkgs/models"
 	"github.com/harbur/golang-gin-starter/pkgs/store"
 	"github.com/harbur/golang-gin-starter/pkgs/utils"
 	"github.com/harbur/golang-gin-starter/restapi/operations/movies"
@@ -51,8 +51,9 @@ func GetMovie(c *gin.Context) {
 // @Description posts a movie
 // @Accept json
 // @Produce json
+// @Param movie body models.Movie true "Movie"
 // @Success 200 {string} string	"ok"
-// @Router /movies/{id} [post]
+// @Router /movies [post]
 func PostMovie(c *gin.Context) {
 	log.Info("post movie")
 	var movie models.Movie
