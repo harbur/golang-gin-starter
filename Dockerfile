@@ -10,7 +10,6 @@ RUN make test install
 FROM golang:1.11.5-alpine
 COPY --from=build /go/bin/golang-starter-server /bin/golang-starter-server
 WORKDIR /
-COPY swagger-ui /swagger-ui
 
 EXPOSE 8080
 CMD ["golang-starter-server", "--host=0.0.0.0", "--port=8080"]
