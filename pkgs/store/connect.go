@@ -1,7 +1,7 @@
 package store
 
 import (
-	"github.com/harbur/golang-starter/models"
+	"github.com/harbur/golang-gin-starter/models"
 	"github.com/jinzhu/gorm"
 
 	// sqlite

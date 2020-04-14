@@ -11,12 +11,12 @@ import (
 	errors "github.com/go-openapi/errors"
 	runtime "github.com/go-openapi/runtime"
 
-	"github.com/harbur/golang-starter/pkgs/apis"
-	"github.com/harbur/golang-starter/pkgs/middlewares"
-	"github.com/harbur/golang-starter/pkgs/store"
-	"github.com/harbur/golang-starter/restapi/operations"
-	"github.com/harbur/golang-starter/restapi/operations/healthz"
-	"github.com/harbur/golang-starter/restapi/operations/movies"
+	"github.com/harbur/golang-gin-starter/pkgs/apis"
+	"github.com/harbur/golang-gin-starter/pkgs/middlewares"
+	"github.com/harbur/golang-gin-starter/pkgs/store"
+	"github.com/harbur/golang-gin-starter/restapi/operations"
+	"github.com/harbur/golang-gin-starter/restapi/operations/healthz"
+	"github.com/harbur/golang-gin-starter/restapi/operations/movies"
 )
 
 //go:generate swagger generate server --target ../../golang-starter --name GolangStarter --spec ../swagger.yaml

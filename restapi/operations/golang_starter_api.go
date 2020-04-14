@@ -19,8 +19,8 @@ import (
 	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/harbur/golang-starter/restapi/operations/healthz"
-	"github.com/harbur/golang-starter/restapi/operations/movies"
+	"github.com/harbur/golang-gin-starter/restapi/operations/healthz"
+	"github.com/harbur/golang-gin-starter/restapi/operations/movies"
 )
 
 // NewGolangStarterAPI creates a new GolangStarter instance

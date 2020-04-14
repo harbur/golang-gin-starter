@@ -2,8 +2,8 @@ package apis
 
 import (
 	"github.com/go-openapi/runtime/middleware"
-	"github.com/harbur/golang-starter/models"
-	"github.com/harbur/golang-starter/restapi/operations/healthz"
+	"github.com/harbur/golang-gin-starter/models"
+	"github.com/harbur/golang-gin-starter/restapi/operations/healthz"
 )
 
 // GitBranch The branch used to build the binary

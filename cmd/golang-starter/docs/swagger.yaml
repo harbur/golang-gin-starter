@@ -1,4 +1,4 @@
-basePath: /api/v1
+basePath: /api/
 info:
   contact:
     email: contact@harbur.io
@@ -6,9 +6,53 @@ info:
   description: Golang Starter.
   license:
     name: MIT
-    url: https://github.com/harbur/golang-starter/blob/master/LICENSE
+    url: https://github.com/harbur/golang-gin-starter/blob/master/LICENSE
   termsOfService: http://swagger.io/terms/
   title: Golang Starter
   version: 1.0.0
-paths: {}
+paths:
+  /movies:
+    get:
+      consumes:
+      - application/json
+      description: lists movies
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: lists movies
+  /movies/{id}:
+    get:
+      consumes:
+      - application/json
+      description: gets a movie
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: gets a movie
+    post:
+      consumes:
+      - application/json
+      description: posts a movie
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: posts a movie
 swagger: "2.0"

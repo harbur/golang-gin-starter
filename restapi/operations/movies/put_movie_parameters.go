@@ -16,7 +16,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/harbur/golang-starter/models"
+	models "github.com/harbur/golang-gin-starter/models"
 )
 
 // NewPutMovieParams creates a new PutMovieParams object

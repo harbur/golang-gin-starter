@@ -1,6 +1,6 @@
 # Golang Starter
 
-This repository is a demo of building a REST API with [Golang] and [SwaggerUI].
+This repository is a demo of building a REST API with [Golang], [SwaggerUI].
 
 We'll be building an API to manage the library of a **Movie streaming service**.
 

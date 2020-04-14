@@ -13,7 +13,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/runtime/middleware"
 
-	models "github.com/harbur/golang-starter/models"
+	models "github.com/harbur/golang-gin-starter/models"
 )
 
 // NewPostMovieParams creates a new PostMovieParams object

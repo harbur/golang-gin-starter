@@ -4,7 +4,9 @@ import (
 	"fmt"
 
 	"github.com/gin-gonic/gin"
-	_ "github.com/harbur/golang-starter/cmd/golang-starter/docs"
+	_ "github.com/harbur/golang-gin-starter/cmd/golang-starter/docs"
+	"github.com/harbur/golang-gin-starter/pkgs/apis"
+	"github.com/harbur/golang-gin-starter/pkgs/store"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
@@ -18,9 +20,9 @@ import (
 // @contact.email contact@harbur.io
 
 // @license.name MIT
-// @license.url https://github.com/harbur/golang-starter/blob/master/LICENSE
+// @license.url https://github.com/harbur/golang-gin-starter/blob/master/LICENSE
 
-// @BasePath /api/v1
+// @BasePath /api/
 func main() {
 
 	// Creates a router without any middleware by default
@@ -33,7 +35,9 @@ func main() {
 
 	// Recovery middleware recovers from any panics and writes a 500 if there was one.
 	r.Use(gin.Recovery())
-
+	store.Connect()
+	r.GET("/api/movies", apis.GetMovies)
+	r.POST("/api/movies", apis.PostMovie)
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	r.Run(fmt.Sprintf(":%v", 8080))
 

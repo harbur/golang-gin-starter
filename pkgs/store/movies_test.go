@@ -5,8 +5,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/harbur/golang-starter/models"
-	"github.com/harbur/golang-starter/pkgs/utils"
+	"github.com/harbur/golang-gin-starter/models"
+	"github.com/harbur/golang-gin-starter/pkgs/utils"
 )
 
 // TestCreateMovieOK creates a movie correctly

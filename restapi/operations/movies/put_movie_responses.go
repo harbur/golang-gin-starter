@@ -10,7 +10,7 @@ import (
 
 	"github.com/go-openapi/runtime"
 
-	models "github.com/harbur/golang-starter/models"
+	models "github.com/harbur/golang-gin-starter/models"
 )
 
 // PutMovieOKCode is the HTTP code returned for type PutMovieOK

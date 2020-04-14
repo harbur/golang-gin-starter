@@ -1,4 +1,4 @@
-module github.com/harbur/golang-starter
+module github.com/harbur/golang-gin-starter
 
 go 1.12
 
@@ -13,6 +13,7 @@ require (
 	github.com/go-openapi/strfmt v0.19.3
 	github.com/go-openapi/swag v0.19.7
 	github.com/go-openapi/validate v0.19.3
+	github.com/google/martian v2.1.0+incompatible
 	github.com/jessevdk/go-flags v1.4.0
 	github.com/jinzhu/gorm v1.9.11
 	github.com/konsorten/go-windows-terminal-sequences v1.0.2 // indirect
