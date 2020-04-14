@@ -11,6 +11,23 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
+func SetupRouter() *gin.Engine {
+	// Creates a router without any middleware by default
+	r := gin.Default()
+
+	// Global middleware
+	// Logger middleware will write the logs to gin.DefaultWriter even if you set with GIN_MODE=release.
+	// By default gin.DefaultWriter = os.Stdout
+	r.Use(gin.Logger())
+
+	// Recovery middleware recovers from any panics and writes a 500 if there was one.
+	r.Use(gin.Recovery())
+	store.Connect()
+	r = apis.SetupRouterMovies(r)
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	return r
+}
+
 // @title Golang Starter
 // @version 1.0.0
 // @description Golang Starter.
@@ -24,24 +41,7 @@ import (
 
 // @BasePath /api/
 func main() {
-
-	// Creates a router without any middleware by default
-	r := gin.New()
-
-	// Global middleware
-	// Logger middleware will write the logs to gin.DefaultWriter even if you set with GIN_MODE=release.
-	// By default gin.DefaultWriter = os.Stdout
-	r.Use(gin.Logger())
-
-	// Recovery middleware recovers from any panics and writes a 500 if there was one.
-	r.Use(gin.Recovery())
-	store.Connect()
-	r.GET("/api/movies", apis.GetMovies)
-	r.POST("/api/movies", apis.PostMovie)
-	r.GET("/api/movies/:id", apis.GetMovie)
-	r.PUT("/api/movies/:id", apis.PutMovie)
-	r.DELETE("/api/movies/:id", apis.DeleteMovie)
-	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	r := SetupRouter()
 	r.Run(fmt.Sprintf(":%v", 8080))
 
 }

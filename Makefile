@@ -27,7 +27,7 @@ install:
 	$(GOINSTALL) $(SRC)
 test:
 	./scripts/coverage.sh
-run: install
+run: generate install
 	$(APP) --port 8080
 deps:
 	$(GOCMD) mod download
@@ -35,7 +35,7 @@ deps:
 	$(GOCMD) mod vendor
 	$(GOCMD) mod verify
 generate:
-	$(SWAGGERGEN) server
+	swag init -d pkgs/ --generalInfo ../cmd/golang-starter/main.go  -o cmd/golang-starter/docs
 docs:
 	$(SWAGGERSERVE) swagger.yaml
 int:
