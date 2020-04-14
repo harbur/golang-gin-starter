@@ -14,14 +14,11 @@ import (
 	"gotest.tools/assert"
 )
 
-func TestGetMoviesOK(t *testing.T) {
+func TestGetMoviesOK2(t *testing.T) {
 	store.Connect()
-	router := SetupRouterMovies(gin.New())
-
 	w := httptest.NewRecorder()
-	req, _ := http.NewRequest("GET", "/api/movies", nil)
-	router.ServeHTTP(w, req)
-
+	c, _ := gin.CreateTestContext(w)
+	GetMovies(c)
 	assert.Equal(t, 200, w.Code)
 	assert.Equal(t, "[]", w.Body.String())
 }
