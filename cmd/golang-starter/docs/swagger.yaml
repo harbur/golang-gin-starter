@@ -24,6 +24,24 @@ info:
   version: 1.0.0
 paths:
   /movies:
+    delete:
+      consumes:
+      - application/json
+      description: deletes a movie
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: deletes a movie
     get:
       consumes:
       - application/json
@@ -55,6 +73,30 @@ paths:
           schema:
             type: string
       summary: posts a movie
+    put:
+      consumes:
+      - application/json
+      description: puts a movie
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Movie
+        in: body
+        name: movie
+        required: true
+        schema:
+          $ref: '#/definitions/models.Movie'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: puts a movie
   /movies/{id}:
     get:
       consumes:

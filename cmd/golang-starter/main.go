@@ -39,6 +39,8 @@ func main() {
 	r.GET("/api/movies", apis.GetMovies)
 	r.POST("/api/movies", apis.PostMovie)
 	r.GET("/api/movies/:id", apis.GetMovie)
+	r.PUT("/api/movies/:id", apis.PutMovie)
+	r.DELETE("/api/movies/:id", apis.DeleteMovie)
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	r.Run(fmt.Sprintf(":%v", 8080))
 

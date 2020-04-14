@@ -9,7 +9,6 @@ import (
 	"github.com/harbur/golang-gin-starter/pkgs/models"
 	"github.com/harbur/golang-gin-starter/pkgs/store"
 	"github.com/harbur/golang-gin-starter/pkgs/utils"
-	"github.com/harbur/golang-gin-starter/restapi/operations/movies"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -23,26 +22,6 @@ import (
 func GetMovies(c *gin.Context) {
 	log.Info("get movies")
 	response := store.ListMovies()
-	c.JSON(http.StatusOK, response)
-}
-
-// GetMovie gets a movie
-// @Summary gets a movie
-// @Description gets a movie
-// @Accept json
-// @Produce json
-// @Param   id     path    int     true        "ID"
-// @Success 200 {string} string	"ok"
-// @Router /movies/{id} [get]
-func GetMovie(c *gin.Context) {
-	log.Info("get movie")
-	id, _ := strconv.ParseInt(c.Params.ByName("id"), 0, 64)
-	response, err := store.GetMovie(id)
-	if err != nil {
-		utils.ErrorHandler(c, err)
-		return
-	}
-
 	c.JSON(http.StatusOK, response)
 }
 
@@ -71,10 +50,45 @@ func PostMovie(c *gin.Context) {
 	c.JSON(http.StatusOK, response)
 }
 
+// GetMovie gets a movie
+// @Summary gets a movie
+// @Description gets a movie
+// @Accept json
+// @Produce json
+// @Param   id     path    int     true        "ID"
+// @Success 200 {string} string	"ok"
+// @Router /movies/{id} [get]
+func GetMovie(c *gin.Context) {
+	log.Info("get movie")
+	id, _ := strconv.ParseInt(c.Params.ByName("id"), 0, 64)
+	response, err := store.GetMovie(id)
+	if err != nil {
+		utils.ErrorHandler(c, err)
+		return
+	}
+
+	c.JSON(http.StatusOK, response)
+}
+
 // PutMovie puts a movie
-func PutMovie(c *gin.Context, params movies.PutMovieParams) {
+// @Summary puts a movie
+// @Description puts a movie
+// @Accept json
+// @Produce json
+// @Param   id     path    int     true        "ID"
+// @Param movie body models.Movie true "Movie"
+// @Success 200 {string} string	"ok"
+// @Router /movies/{id} [put]
+func PutMovie(c *gin.Context) {
 	log.Info("put movie")
-	response, err := store.UpdateMovie(params.ID, *params.Movie)
+	id, _ := strconv.ParseInt(c.Params.ByName("id"), 0, 64)
+	var movie models.Movie
+	if err := c.ShouldBindJSON(&movie); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	response, err := store.UpdateMovie(id, movie)
 	if err != nil {
 		log.Info(err.Error())
 		utils.ErrorHandler(c, err)
@@ -84,10 +98,18 @@ func PutMovie(c *gin.Context, params movies.PutMovieParams) {
 	c.JSON(http.StatusOK, response)
 }
 
-// DeleteMovie gets a movie
-func DeleteMovie(c *gin.Context, params movies.DeleteMovieParams) {
+// DeleteMovie deletes a movie
+// @Summary deletes a movie
+// @Description deletes a movie
+// @Accept json
+// @Produce json
+// @Param   id     path    int     true        "ID"
+// @Success 200 {string} string	"ok"
+// @Router /movies/{id} [delete]
+func DeleteMovie(c *gin.Context) {
 	log.Info("delete movie")
-	store.DeleteMovie(params.ID)
+	id, _ := strconv.ParseInt(c.Params.ByName("id"), 0, 64)
+	store.DeleteMovie(id)
 
 	c.JSON(http.StatusOK, nil)
 }
