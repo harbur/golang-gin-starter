@@ -104,12 +104,12 @@ func PutMovie(c *gin.Context) {
 // @Accept json
 // @Produce json
 // @Param   id     path    int     true        "ID"
-// @Success 200 {string} string	"ok"
+// @Success 204 {string} string	"ok"
 // @Router /movies/{id} [delete]
 func DeleteMovie(c *gin.Context) {
 	log.Info("delete movie")
 	id, _ := strconv.ParseInt(c.Params.ByName("id"), 0, 64)
 	store.DeleteMovie(id)
 
-	c.JSON(http.StatusOK, nil)
+	c.Status(http.StatusNoContent)
 }

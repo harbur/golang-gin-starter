@@ -24,24 +24,6 @@ info:
   version: 1.0.0
 paths:
   /movies:
-    delete:
-      consumes:
-      - application/json
-      description: deletes a movie
-      parameters:
-      - description: ID
-        in: path
-        name: id
-        required: true
-        type: integer
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: ok
-          schema:
-            type: string
-      summary: deletes a movie
     get:
       consumes:
       - application/json
@@ -73,6 +55,43 @@ paths:
           schema:
             type: string
       summary: posts a movie
+  /movies/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: deletes a movie
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: ok
+          schema:
+            type: string
+      summary: deletes a movie
+    get:
+      consumes:
+      - application/json
+      description: gets a movie
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: gets a movie
     put:
       consumes:
       - application/json
@@ -97,23 +116,4 @@ paths:
           schema:
             type: string
       summary: puts a movie
-  /movies/{id}:
-    get:
-      consumes:
-      - application/json
-      description: gets a movie
-      parameters:
-      - description: ID
-        in: path
-        name: id
-        required: true
-        type: integer
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: ok
-          schema:
-            type: string
-      summary: gets a movie
 swagger: "2.0"

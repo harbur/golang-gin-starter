@@ -35,23 +35,16 @@
                     }
                 }
             },
-            "put": {
-                "description": "puts a movie",
+            "post": {
+                "description": "posts a movie",
                 "consumes": [
                     "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
-                "summary": "puts a movie",
+                "summary": "posts a movie",
                 "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "ID",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    },
                     {
                         "description": "Movie",
                         "name": "movie",
@@ -70,17 +63,53 @@
                         }
                     }
                 }
-            },
-            "post": {
-                "description": "posts a movie",
+            }
+        },
+        "/movies/{id}": {
+            "get": {
+                "description": "gets a movie",
                 "consumes": [
                     "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
-                "summary": "posts a movie",
+                "summary": "gets a movie",
                 "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "puts a movie",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "puts a movie",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
                     {
                         "description": "Movie",
                         "name": "movie",
@@ -119,36 +148,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "ok",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/movies/{id}": {
-            "get": {
-                "description": "gets a movie",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "summary": "gets a movie",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "ID",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
+                    "204": {
                         "description": "ok",
                         "schema": {
                             "type": "string"
