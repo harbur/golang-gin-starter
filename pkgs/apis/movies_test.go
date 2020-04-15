@@ -72,6 +72,26 @@ func TestPostMovieWithRouterErrorInvalidID(t *testing.T) {
 	assert.Equal(t, `{"error":"invalid id"}`, w.Body.String())
 }
 
+func TestPostMovieWithRouterErrorNameIsRequired(t *testing.T) {
+	// prepare
+	store.Connect()
+	router := gin.New()
+	router.POST("/api/movies", PostMovie)
+
+	body := &models.Movie{}
+	buf := new(bytes.Buffer)
+	json.NewEncoder(buf).Encode(body)
+
+	// test
+	w := httptest.NewRecorder()
+	req, _ := http.NewRequest("POST", "/api/movies", buf)
+	router.ServeHTTP(w, req)
+
+	// assert
+	assert.Equal(t, 400, w.Code)
+	assert.Equal(t, `{"error":"Key: 'Movie.Name' Error:Field validation for 'Name' failed on the 'required' tag"}`, w.Body.String())
+}
+
 func TestGetMovieWithRouterOK(t *testing.T) {
 	// prepare
 	store.Connect()
@@ -169,6 +189,30 @@ func TestPutMovieErrorNotFound(t *testing.T) {
 	assert.Equal(t, 404, w.Code)
 	assert.Equal(t, `{"error":"record not found"}`, w.Body.String())
 }
+
+func TestPutMovieWithRouterErrorNameIsRequired(t *testing.T) {
+	// prepare
+	store.Connect()
+	router := gin.New()
+	router.PUT("/api/movies/:id", PutMovie)
+
+	body := models.Movie{
+		ID: 1,
+	}
+
+	buf := new(bytes.Buffer)
+	json.NewEncoder(buf).Encode(body)
+
+	// test
+	w := httptest.NewRecorder()
+	req, _ := http.NewRequest("PUT", "/api/movies/1", buf)
+	router.ServeHTTP(w, req)
+
+	// assert
+	assert.Equal(t, 400, w.Code)
+	assert.Equal(t, `{"error":"Key: 'Movie.Name' Error:Field validation for 'Name' failed on the 'required' tag"}`, w.Body.String())
+}
+
 func TestDeleteMovieOK(t *testing.T) {
 	// prepare
 	store.Connect()
