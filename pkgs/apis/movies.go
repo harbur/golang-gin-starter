@@ -38,7 +38,7 @@ func GetMovies(c *gin.Context) {
 func PostMovie(c *gin.Context) {
 	log.Info("post movie")
 	var movie models.Movie
-	if err := c.ShouldBindJSON(&movie); err != nil {
+	if err := c.BindJSON(&movie); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
@@ -87,7 +87,7 @@ func PutMovie(c *gin.Context) {
 	log.Info("put movie")
 	id, _ := strconv.ParseInt(c.Params.ByName("id"), 0, 64)
 	var movie models.Movie
-	if err := c.ShouldBindJSON(&movie); err != nil {
+	if err := c.BindJSON(&movie); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
