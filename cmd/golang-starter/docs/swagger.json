@@ -199,13 +199,14 @@
     "definitions": {
         "models.Movie": {
             "type": "object",
+            "required": [
+                "name"
+            ],
             "properties": {
                 "id": {
-                    "description": "id",
                     "type": "integer"
                 },
                 "name": {
-                    "description": "name\nRequired: true",
                     "type": "string"
                 }
             }

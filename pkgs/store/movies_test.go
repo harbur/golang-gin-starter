@@ -6,7 +6,6 @@ import (
 	"github.com/stretchr/testify/assert"
 
 	"github.com/harbur/golang-gin-starter/pkgs/models"
-	"github.com/harbur/golang-gin-starter/pkgs/utils"
 )
 
 // TestCreateMovieOK creates a movie correctly
@@ -14,7 +13,7 @@ func TestCreateMovieOK(t *testing.T) {
 	// Prepare
 	Connect()
 	movie := models.Movie{
-		Name: utils.StrPtr("godfather"),
+		Name: "godfather",
 	}
 
 	// Command
@@ -34,7 +33,7 @@ func TestCreateMovieErrorInvalidID(t *testing.T) {
 	Connect()
 	movie := models.Movie{
 		ID:   1,
-		Name: utils.StrPtr("godfather"),
+		Name: "godfather",
 	}
 
 	// Command
@@ -49,7 +48,7 @@ func TestGetMovieOK(t *testing.T) {
 	// Prepare
 	Connect()
 	movie := models.Movie{
-		Name: utils.StrPtr("godfather"),
+		Name: "godfather",
 	}
 	movie, err := CreateMovie(movie)
 	assert.NoError(t, err)
@@ -79,13 +78,13 @@ func TestUpdateMovieOK(t *testing.T) {
 	// Prepare
 	Connect()
 	movie := models.Movie{
-		Name: utils.StrPtr("godfather"),
+		Name: "godfather",
 	}
 	movie, err := CreateMovie(movie)
 	assert.NoError(t, err)
 
 	// Command
-	movie.Name = utils.StrPtr("godfather 2")
+	movie.Name = "godfather 2"
 	_, err = UpdateMovie(movie.ID, movie)
 
 	// Assert
@@ -98,7 +97,7 @@ func TestUpdateMovieErrorNotFound(t *testing.T) {
 	Connect()
 	movie := models.Movie{
 		ID:   1,
-		Name: utils.StrPtr("godfather 2"),
+		Name: "godfather 2",
 	}
 
 	// Command
@@ -113,7 +112,7 @@ func TestUpdateMovieErrorInvalidID(t *testing.T) {
 	// Prepare
 	Connect()
 	movie := models.Movie{
-		Name: utils.StrPtr("godfather"),
+		Name: "godfather",
 	}
 	movie, err := CreateMovie(movie)
 	assert.NoError(t, err)
@@ -131,7 +130,7 @@ func TestListMoviesOK(t *testing.T) {
 	// Prepare
 	Connect()
 	movie := models.Movie{
-		Name: utils.StrPtr("godfather"),
+		Name: "godfather",
 	}
 
 	// movies list is empty
@@ -153,7 +152,7 @@ func TestDeleteMovieOK(t *testing.T) {
 	// setup
 	Connect()
 	movie := models.Movie{
-		Name: utils.StrPtr("godfather"),
+		Name: "godfather",
 	}
 	movie, err := CreateMovie(movie)
 	assert.NoError(t, err)

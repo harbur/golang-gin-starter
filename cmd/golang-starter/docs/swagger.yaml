@@ -3,13 +3,11 @@ definitions:
   models.Movie:
     properties:
       id:
-        description: id
         type: integer
       name:
-        description: |-
-          name
-          Required: true
         type: string
+    required:
+    - name
     type: object
 info:
   contact:

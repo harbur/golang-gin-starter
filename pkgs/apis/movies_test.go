@@ -10,7 +10,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/harbur/golang-gin-starter/pkgs/models"
 	"github.com/harbur/golang-gin-starter/pkgs/store"
-	"github.com/harbur/golang-gin-starter/pkgs/utils"
 	"gotest.tools/assert"
 )
 
@@ -35,7 +34,7 @@ func TestPostMovieWithRouterOK(t *testing.T) {
 	router.POST("/api/movies", PostMovie)
 
 	body := &models.Movie{
-		Name: utils.StrPtr("godfather"),
+		Name: "godfather",
 	}
 	buf := new(bytes.Buffer)
 	json.NewEncoder(buf).Encode(body)
@@ -58,7 +57,7 @@ func TestPostMovieWithRouterErrorInvalidID(t *testing.T) {
 
 	body := &models.Movie{
 		ID:   1,
-		Name: utils.StrPtr("godfather"),
+		Name: "godfather",
 	}
 	buf := new(bytes.Buffer)
 	json.NewEncoder(buf).Encode(body)
@@ -80,7 +79,7 @@ func TestGetMovieWithRouterOK(t *testing.T) {
 	router.GET("/api/movies/:id", GetMovie)
 
 	body := models.Movie{
-		Name: utils.StrPtr("godfather"),
+		Name: "godfather",
 	}
 	_, err := store.CreateMovie(body)
 	assert.NilError(t, err)
@@ -105,7 +104,7 @@ func TestGetMovieErrorNotFound(t *testing.T) {
 	router.GET("/api/movies/:id", GetMovie)
 
 	body := models.Movie{
-		Name: utils.StrPtr("godfather"),
+		Name: "godfather",
 	}
 
 	buf := new(bytes.Buffer)
@@ -128,11 +127,11 @@ func TestPutMovieWithRouterOK(t *testing.T) {
 	router.PUT("/api/movies/:id", PutMovie)
 
 	body := models.Movie{
-		Name: utils.StrPtr("godfather"),
+		Name: "godfather",
 	}
 	body, err := store.CreateMovie(body)
 	assert.NilError(t, err)
-	body.Name = utils.StrPtr("godfather 2")
+	body.Name = "godfather 2"
 
 	buf := new(bytes.Buffer)
 	json.NewEncoder(buf).Encode(body)
@@ -155,7 +154,7 @@ func TestPutMovieErrorNotFound(t *testing.T) {
 
 	body := models.Movie{
 		ID:   1,
-		Name: utils.StrPtr("godfather 2"),
+		Name: "godfather 2",
 	}
 
 	buf := new(bytes.Buffer)
@@ -177,7 +176,7 @@ func TestDeleteMovieOK(t *testing.T) {
 	router.DELETE("/api/movies/:id", DeleteMovie)
 
 	body := models.Movie{
-		Name: utils.StrPtr("godfather"),
+		Name: "godfather",
 	}
 	body, err := store.CreateMovie(body)
 	assert.NilError(t, err)
