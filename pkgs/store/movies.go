@@ -9,8 +9,8 @@ import (
 )
 
 // ListMovies lists movies
-func ListMovies() models.Movies {
-	var movies models.Movies
+func ListMovies() []*models.Movie {
+	var movies []*models.Movie
 	db.Find(&movies)
 	return movies
 }
