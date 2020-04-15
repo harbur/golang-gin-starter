@@ -16,4 +16,4 @@ fi
 done
 
 go tool cover -func profile.cov
-
+rm profile.cov
