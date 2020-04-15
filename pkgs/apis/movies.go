@@ -12,17 +12,6 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-// SetupRouterMovies setups the router for movies API endpoints
-func SetupRouterMovies(r *gin.Engine) *gin.Engine {
-	group := r.Group("/api/movies")
-	group.GET("", GetMovies)
-	group.POST("", PostMovie)
-	group.GET(":id", GetMovie)
-	group.PUT(":id", PutMovie)
-	group.DELETE(":id", DeleteMovie)
-	return r
-}
-
 // GetMovies lists movies
 // @Summary lists movies
 // @Description lists movies

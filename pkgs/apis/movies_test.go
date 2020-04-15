@@ -31,7 +31,9 @@ func TestGetMoviesWithFuncOK(t *testing.T) {
 func TestPostMovieWithRouterOK(t *testing.T) {
 	// prepare
 	store.Connect()
-	router := SetupRouterMovies(gin.New())
+	router := gin.New()
+	router.POST("/api/movies", PostMovie)
+
 	body := &models.Movie{
 		Name: utils.StrPtr("godfather"),
 	}
@@ -51,7 +53,9 @@ func TestPostMovieWithRouterOK(t *testing.T) {
 func TestPostMovieWithRouterErrorInvalidID(t *testing.T) {
 	// prepare
 	store.Connect()
-	router := SetupRouterMovies(gin.New())
+	router := gin.New()
+	router.POST("/api/movies", PostMovie)
+
 	body := &models.Movie{
 		ID:   1,
 		Name: utils.StrPtr("godfather"),
@@ -72,7 +76,9 @@ func TestPostMovieWithRouterErrorInvalidID(t *testing.T) {
 func TestGetMovieWithRouterOK(t *testing.T) {
 	// prepare
 	store.Connect()
-	router := SetupRouterMovies(gin.New())
+	router := gin.New()
+	router.GET("/api/movies/:id", GetMovie)
+
 	body := models.Movie{
 		Name: utils.StrPtr("godfather"),
 	}
@@ -95,7 +101,9 @@ func TestGetMovieWithRouterOK(t *testing.T) {
 func TestGetMovieErrorNotFound(t *testing.T) {
 	// prepare
 	store.Connect()
-	router := SetupRouterMovies(gin.New())
+	router := gin.New()
+	router.GET("/api/movies/:id", GetMovie)
+
 	body := models.Movie{
 		Name: utils.StrPtr("godfather"),
 	}
@@ -116,7 +124,9 @@ func TestGetMovieErrorNotFound(t *testing.T) {
 func TestPutMovieWithRouterOK(t *testing.T) {
 	// prepare
 	store.Connect()
-	router := SetupRouterMovies(gin.New())
+	router := gin.New()
+	router.PUT("/api/movies/:id", PutMovie)
+
 	body := models.Movie{
 		Name: utils.StrPtr("godfather"),
 	}
@@ -140,7 +150,9 @@ func TestPutMovieWithRouterOK(t *testing.T) {
 func TestPutMovieErrorNotFound(t *testing.T) {
 	// prepare
 	store.Connect()
-	router := SetupRouterMovies(gin.New())
+	router := gin.New()
+	router.PUT("/api/movies/:id", PutMovie)
+
 	body := models.Movie{
 		ID:   1,
 		Name: utils.StrPtr("godfather 2"),
@@ -161,7 +173,9 @@ func TestPutMovieErrorNotFound(t *testing.T) {
 func TestDeleteMovieOK(t *testing.T) {
 	// prepare
 	store.Connect()
-	router := SetupRouterMovies(gin.New())
+	router := gin.New()
+	router.DELETE("/api/movies/:id", DeleteMovie)
+
 	body := models.Movie{
 		Name: utils.StrPtr("godfather"),
 	}
