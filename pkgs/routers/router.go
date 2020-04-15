@@ -2,7 +2,6 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/harbur/golang-gin-starter/pkgs/apis"
 	"github.com/harbur/golang-gin-starter/pkgs/store"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
@@ -21,7 +20,7 @@ func SetupRouter() *gin.Engine {
 	// Recovery middleware recovers from any panics and writes a 500 if there was one.
 	r.Use(gin.Recovery())
 	store.Connect()
-	r = apis.SetupRouterHealthz(r)
+	r = SetupRouterHealthz(r)
 	r = SetupRouterMovies(r)
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	return r

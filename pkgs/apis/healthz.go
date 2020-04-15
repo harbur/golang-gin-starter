@@ -7,12 +7,6 @@ import (
 	"github.com/harbur/golang-gin-starter/pkgs/models"
 )
 
-// SetupRouterHealthz setups the router for healthz API endpoints
-func SetupRouterHealthz(r *gin.Engine) *gin.Engine {
-	r.GET("/healthz", Healthz)
-	r.GET("/api/healthz", Healthz)
-	return r
-}
 
 // GitBranch The branch used to build the binary
 var GitBranch string
