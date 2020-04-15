@@ -26,3 +26,17 @@ func TestErrorHandler(t *testing.T) {
 	err := errors.New("hello")
 	ErrorHandler(c, err)
 }
+
+func TestErrorHandler2(t *testing.T) {
+	w := httptest.NewRecorder()
+	c, _ := gin.CreateTestContext(w)
+	err := errors.New("record not found")
+	ErrorHandler(c, err)
+}
+
+func TestErrorHandler3(t *testing.T) {
+	w := httptest.NewRecorder()
+	c, _ := gin.CreateTestContext(w)
+	err := errors.New("invalid id")
+	ErrorHandler(c, err)
+}

@@ -14,11 +14,7 @@ var (
 
 // Connect connects to db
 func Connect() {
-	// Please define your user name and password for my sql.
-	d, err := gorm.Open("sqlite3", ":memory:")
-	if err != nil {
-		panic(err)
-	}
+	d, _ := gorm.Open("sqlite3", ":memory:")
 	db = d
 	db.AutoMigrate(&models.Movie{})
 }
