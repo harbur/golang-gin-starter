@@ -16,6 +16,29 @@
     },
     "basePath": "/api/",
     "paths": {
+        "/healthz": {
+            "get": {
+                "description": "healthz",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "healthz"
+                ],
+                "summary": "healthz",
+                "responses": {
+                    "204": {
+                        "description": "ok",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/movies": {
             "get": {
                 "description": "lists movies",
@@ -24,6 +47,9 @@
                 ],
                 "produces": [
                     "application/json"
+                ],
+                "tags": [
+                    "movies"
                 ],
                 "summary": "lists movies",
                 "responses": {
@@ -42,6 +68,9 @@
                 ],
                 "produces": [
                     "application/json"
+                ],
+                "tags": [
+                    "movies"
                 ],
                 "summary": "posts a movie",
                 "parameters": [
@@ -74,6 +103,9 @@
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "movies"
+                ],
                 "summary": "gets a movie",
                 "parameters": [
                     {
@@ -100,6 +132,9 @@
                 ],
                 "produces": [
                     "application/json"
+                ],
+                "tags": [
+                    "movies"
                 ],
                 "summary": "puts a movie",
                 "parameters": [
@@ -136,6 +171,9 @@
                 ],
                 "produces": [
                     "application/json"
+                ],
+                "tags": [
+                    "movies"
                 ],
                 "summary": "deletes a movie",
                 "parameters": [

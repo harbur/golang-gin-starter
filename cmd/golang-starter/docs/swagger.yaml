@@ -23,6 +23,21 @@ info:
   title: Golang Starter
   version: 1.0.0
 paths:
+  /healthz:
+    get:
+      consumes:
+      - application/json
+      description: healthz
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: ok
+          schema:
+            type: string
+      summary: healthz
+      tags:
+      - healthz
   /movies:
     get:
       consumes:
@@ -36,6 +51,8 @@ paths:
           schema:
             type: string
       summary: lists movies
+      tags:
+      - movies
     post:
       consumes:
       - application/json
@@ -55,6 +72,8 @@ paths:
           schema:
             type: string
       summary: posts a movie
+      tags:
+      - movies
   /movies/{id}:
     delete:
       consumes:
@@ -74,6 +93,8 @@ paths:
           schema:
             type: string
       summary: deletes a movie
+      tags:
+      - movies
     get:
       consumes:
       - application/json
@@ -92,6 +113,8 @@ paths:
           schema:
             type: string
       summary: gets a movie
+      tags:
+      - movies
     put:
       consumes:
       - application/json
@@ -116,4 +139,6 @@ paths:
           schema:
             type: string
       summary: puts a movie
+      tags:
+      - movies
 swagger: "2.0"

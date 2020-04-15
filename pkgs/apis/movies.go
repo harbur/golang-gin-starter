@@ -26,6 +26,7 @@ func SetupRouterMovies(r *gin.Engine) *gin.Engine {
 // GetMovies lists movies
 // @Summary lists movies
 // @Description lists movies
+// @Tags movies
 // @Accept json
 // @Produce json
 // @Success 200 {string} string	"ok"
@@ -39,6 +40,7 @@ func GetMovies(c *gin.Context) {
 // PostMovie posts a movie
 // @Summary posts a movie
 // @Description posts a movie
+// @Tags movies
 // @Accept json
 // @Produce json
 // @Param movie body models.Movie true "Movie"
@@ -64,6 +66,7 @@ func PostMovie(c *gin.Context) {
 // GetMovie gets a movie
 // @Summary gets a movie
 // @Description gets a movie
+// @Tags movies
 // @Accept json
 // @Produce json
 // @Param   id     path    int     true        "ID"
@@ -84,6 +87,7 @@ func GetMovie(c *gin.Context) {
 // PutMovie puts a movie
 // @Summary puts a movie
 // @Description puts a movie
+// @Tags movies
 // @Accept json
 // @Produce json
 // @Param   id     path    int     true        "ID"
@@ -112,6 +116,7 @@ func PutMovie(c *gin.Context) {
 // DeleteMovie deletes a movie
 // @Summary deletes a movie
 // @Description deletes a movie
+// @Tags movies
 // @Accept json
 // @Produce json
 // @Param   id     path    int     true        "ID"

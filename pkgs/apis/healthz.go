@@ -9,8 +9,8 @@ import (
 
 // SetupRouterHealthz setups the router for healthz API endpoints
 func SetupRouterHealthz(r *gin.Engine) *gin.Engine {
-	group := r.Group("/healthz")
-	group.GET("", Healthz)
+	r.GET("/healthz", Healthz)
+	r.GET("/api/healthz", Healthz)
 	return r
 }
 
@@ -30,6 +30,13 @@ var GitState string
 var BuildDate string
 
 // Healthz handles healthz
+// @Summary healthz
+// @Description healthz
+// @Tags healthz
+// @Accept json
+// @Produce json
+// @Success 204 {string} string	"ok"
+// @Router /healthz [get]
 func Healthz(c *gin.Context) {
 	c.JSON(http.StatusOK, healthcheck())
 }
