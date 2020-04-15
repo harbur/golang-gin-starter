@@ -11,6 +11,7 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
+// SetupRouter handles the setup of Gin router
 func SetupRouter() *gin.Engine {
 	// Creates a router without any middleware by default
 	r := gin.Default()
@@ -23,6 +24,7 @@ func SetupRouter() *gin.Engine {
 	// Recovery middleware recovers from any panics and writes a 500 if there was one.
 	r.Use(gin.Recovery())
 	store.Connect()
+	r = apis.SetupRouterHealthz(r)
 	r = apis.SetupRouterMovies(r)
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	return r
