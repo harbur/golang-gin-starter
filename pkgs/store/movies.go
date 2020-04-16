@@ -26,14 +26,14 @@ func CreateMovie(movie models.Movie) (models.Movie, error) {
 }
 
 // GetMovie gets a movie
-func GetMovie(id int64) (models.Movie, error) {
+func GetMovie(id uint) (models.Movie, error) {
 	var movie models.Movie
 	err := db.Where("ID = ?", id).Find(&movie).Error
 	return movie, err
 }
 
 // UpdateMovie updates a movie
-func UpdateMovie(id int64, movie models.Movie) (models.Movie, error) {
+func UpdateMovie(id uint, movie models.Movie) (models.Movie, error) {
 	// make sure payload contains correct id
 	if id != movie.ID {
 		return movie, errors.New("invalid id")
@@ -48,7 +48,7 @@ func UpdateMovie(id int64, movie models.Movie) (models.Movie, error) {
 }
 
 // DeleteMovie deletes a movies
-func DeleteMovie(id int64) {
+func DeleteMovie(id uint) {
 	var movie models.Movie
 	db.Where("ID = ?", id).Delete(movie)
 }

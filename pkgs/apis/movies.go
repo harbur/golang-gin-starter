@@ -64,7 +64,7 @@ func PostMovie(c *gin.Context) {
 func GetMovie(c *gin.Context) {
 	log.Info("get movie")
 	id, _ := strconv.ParseInt(c.Params.ByName("id"), 0, 64)
-	response, err := store.GetMovie(id)
+	response, err := store.GetMovie(uint(id))
 	if err != nil {
 		utils.ErrorHandler(c, err)
 		return
@@ -92,7 +92,7 @@ func PutMovie(c *gin.Context) {
 		return
 	}
 
-	response, err := store.UpdateMovie(id, movie)
+	response, err := store.UpdateMovie(uint(id), movie)
 	if err != nil {
 		log.Info(err.Error())
 		utils.ErrorHandler(c, err)
@@ -114,7 +114,7 @@ func PutMovie(c *gin.Context) {
 func DeleteMovie(c *gin.Context) {
 	log.Info("delete movie")
 	id, _ := strconv.ParseInt(c.Params.ByName("id"), 0, 64)
-	store.DeleteMovie(id)
+	store.DeleteMovie(uint(id))
 
 	c.Status(http.StatusNoContent)
 }

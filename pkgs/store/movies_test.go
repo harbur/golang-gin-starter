@@ -3,6 +3,7 @@ package store
 import (
 	"testing"
 
+	"github.com/jinzhu/gorm"
 	"github.com/stretchr/testify/assert"
 
 	"github.com/harbur/golang-gin-starter/pkgs/models"
@@ -21,10 +22,10 @@ func TestCreateMovieOK(t *testing.T) {
 
 	// Assert
 	assert.NoError(t, err)
-	assert.Equal(t, int64(1), movie.ID, "the movie ID should now be 1")
+	assert.Equal(t, uint(1), movie.ID, "the movie ID should now be 1")
 	var stored models.Movie
 	db.Where("ID = ?", movie.ID).Find(&stored)
-	assert.Equal(t, movie, stored, "the movie is not stored properly to db")
+	assert.Equal(t, movie.Name, stored.Name, "the movie is not stored properly to db")
 }
 
 // TestCreateMovieErrorInvalidID creates a movie with invalid id
@@ -32,8 +33,8 @@ func TestCreateMovieErrorInvalidID(t *testing.T) {
 	// Prepare
 	Connect()
 	movie := models.Movie{
-		ID:   1,
-		Name: "godfather",
+		Model: gorm.Model{ID: 1},
+		Name:  "godfather",
 	}
 
 	// Command
@@ -58,7 +59,7 @@ func TestGetMovieOK(t *testing.T) {
 
 	// Assert
 	assert.NoError(t, err)
-	assert.Equal(t, movie, response, "the movie is not retrieved properly from db")
+	assert.Equal(t, movie.Name, response.Name, "the movie is not retrieved properly from db")
 }
 
 // TestGetMovieErrorNotFound gets a movie that does not exist
@@ -96,8 +97,8 @@ func TestUpdateMovieErrorNotFound(t *testing.T) {
 	// Prepare
 	Connect()
 	movie := models.Movie{
-		ID:   1,
-		Name: "godfather 2",
+		Model: gorm.Model{ID: 1},
+		Name:  "godfather 2",
 	}
 
 	// Command
@@ -144,7 +145,7 @@ func TestListMoviesOK(t *testing.T) {
 	// movies list has a movie
 	movies = ListMovies()
 	assert.Len(t, movies, 1)
-	assert.Equal(t, movie, *movies[0])
+	assert.Equal(t, movie.Name, movies[0].Name)
 }
 
 // TestDeleteMovieOK deletes a movie

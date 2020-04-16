@@ -10,7 +10,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/harbur/golang-gin-starter/pkgs/models"
 	"github.com/harbur/golang-gin-starter/pkgs/store"
-	"gotest.tools/assert"
+	"github.com/jinzhu/gorm"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestGetMoviesWithFuncOK(t *testing.T) {
@@ -46,7 +47,7 @@ func TestPostMovieWithRouterOK(t *testing.T) {
 
 	// assert
 	assert.Equal(t, 200, w.Code)
-	assert.Equal(t, `{"id":1,"name":"godfather"}`, w.Body.String())
+	assert.Regexp(t, `{"ID":1,"CreatedAt":".*","UpdatedAt":".*","DeletedAt":null,"name":"godfather"}`, w.Body.String())
 }
 
 func TestPostMovieWithRouterErrorInvalidID(t *testing.T) {
@@ -56,8 +57,8 @@ func TestPostMovieWithRouterErrorInvalidID(t *testing.T) {
 	router.POST("/api/movies", PostMovie)
 
 	body := &models.Movie{
-		ID:   1,
-		Name: "godfather",
+		Model: gorm.Model{ID: 1},
+		Name:  "godfather",
 	}
 	buf := new(bytes.Buffer)
 	json.NewEncoder(buf).Encode(body)
@@ -102,7 +103,7 @@ func TestGetMovieWithRouterOK(t *testing.T) {
 		Name: "godfather",
 	}
 	_, err := store.CreateMovie(body)
-	assert.NilError(t, err)
+	assert.NoError(t, err)
 
 	buf := new(bytes.Buffer)
 	json.NewEncoder(buf).Encode(body)
@@ -114,7 +115,7 @@ func TestGetMovieWithRouterOK(t *testing.T) {
 
 	// assert
 	assert.Equal(t, 200, w.Code)
-	assert.Equal(t, `{"id":1,"name":"godfather"}`, w.Body.String())
+	assert.Regexp(t, `{"ID":1,"CreatedAt":".*","UpdatedAt":".*","DeletedAt":null,"name":"godfather"}`, w.Body.String())
 }
 
 func TestGetMovieErrorNotFound(t *testing.T) {
@@ -150,7 +151,7 @@ func TestPutMovieWithRouterOK(t *testing.T) {
 		Name: "godfather",
 	}
 	body, err := store.CreateMovie(body)
-	assert.NilError(t, err)
+	assert.NoError(t, err)
 	body.Name = "godfather 2"
 
 	buf := new(bytes.Buffer)
@@ -163,7 +164,7 @@ func TestPutMovieWithRouterOK(t *testing.T) {
 
 	// assert
 	assert.Equal(t, 200, w.Code)
-	assert.Equal(t, `{"id":1,"name":"godfather 2"}`, w.Body.String())
+	assert.Regexp(t, `{"ID":1,"CreatedAt":".*","UpdatedAt":".*","DeletedAt":null,"name":"godfather 2"}`, w.Body.String())
 }
 
 func TestPutMovieErrorNotFound(t *testing.T) {
@@ -173,8 +174,8 @@ func TestPutMovieErrorNotFound(t *testing.T) {
 	router.PUT("/api/movies/:id", PutMovie)
 
 	body := models.Movie{
-		ID:   1,
-		Name: "godfather 2",
+		Model: gorm.Model{ID: 1},
+		Name:  "godfather 2",
 	}
 
 	buf := new(bytes.Buffer)
@@ -197,7 +198,7 @@ func TestPutMovieWithRouterErrorNameIsRequired(t *testing.T) {
 	router.PUT("/api/movies/:id", PutMovie)
 
 	body := models.Movie{
-		ID: 1,
+		Model: gorm.Model{ID: 1},
 	}
 
 	buf := new(bytes.Buffer)
@@ -223,7 +224,7 @@ func TestDeleteMovieOK(t *testing.T) {
 		Name: "godfather",
 	}
 	body, err := store.CreateMovie(body)
-	assert.NilError(t, err)
+	assert.NoError(t, err)
 
 	buf := new(bytes.Buffer)
 	json.NewEncoder(buf).Encode(body)

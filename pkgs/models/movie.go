@@ -1,7 +1,9 @@
 package models
 
+import "github.com/jinzhu/gorm"
+
 // Movie movie
 type Movie struct {
-	ID   int64  `json:"id,omitempty"`
+	gorm.Model
 	Name string `json:"name" binding:"required"`
 }
