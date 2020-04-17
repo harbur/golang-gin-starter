@@ -2,8 +2,6 @@ basePath: /api/
 definitions:
   models.Movie:
     properties:
-      id:
-        type: integer
       name:
         type: string
     required:

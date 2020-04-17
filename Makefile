@@ -1,20 +1,7 @@
 # Go parameters
-GOCMD=go
 GOVVVCMD=govvv
-SRC=./cmd/golang-starter
-APP=golang-starter
+APP=golang-gin-starter
 ALL=./...
-GOINSTALL=$(GOVVVCMD) install -pkg github.com/harbur/golang-gin-starter/pkgs/apis
-GOCLEAN=$(GOCMD) clean
-GOTEST=$(GOCMD) test
-GOGENERATE=$(GOCMD) generate
-DEP=dep
-DEPENSURE=$(DEP) ensure
-DOCS=$(SWAGGER) serve
-# Swagger Commands
-SWAGGERCMD=swagger
-SWAGGERSERVE=$(SWAGGERCMD) serve
-SWAGGERGEN=$(SWAGGERCMD) generate
 
 -include .env
 
@@ -23,21 +10,19 @@ SWAGGERGEN=$(SWAGGERCMD) generate
 .PHONY: all test install
 
 all: test install
-install:
-	$(GOINSTALL) $(SRC)
+install: docs
+	govvv install
 test:
 	./scripts/coverage.sh
-run: generate install
-	$(APP) --port 8080
+run: docs
+	go run main.go
 deps:
-	$(GOCMD) mod download
-	$(GOCMD) mod tidy
-	$(GOCMD) mod vendor
-	$(GOCMD) mod verify
-generate:
-	swag init -d pkgs/ --generalInfo ../cmd/golang-starter/main.go  -o cmd/golang-starter/docs
+	go mod download
+	go mod tidy
+	go mod vendor
+	go mod verify
 docs:
-	$(SWAGGERSERVE) swagger.yaml
+	swag init
 int:
 	cd test/ && ./integration.sh
 

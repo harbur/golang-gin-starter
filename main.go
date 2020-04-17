@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "github.com/harbur/golang-gin-starter/cmd/golang-starter/docs"
+	_ "github.com/harbur/golang-gin-starter/docs"
 	"github.com/harbur/golang-gin-starter/pkgs/routers"
 )
 
@@ -19,5 +19,5 @@ import (
 // @BasePath /api/
 func main() {
 	r := routers.SetupRouter()
-	r.Run(":8080")
+	r.Run("localhost:8080")
 }
