@@ -15,7 +15,7 @@ install: docs
 test:
 	./scripts/coverage.sh
 run: docs
-	go run main.go
+	fresh
 deps:
 	go mod download
 	go mod tidy
