@@ -17,5 +17,4 @@ func Connect() {
 	d, _ := gorm.Open("sqlite3", ":memory:")
 	db = d
 	db.AutoMigrate(&models.Movie{})
-	db.AutoMigrate(&models.Rating{})
 }
