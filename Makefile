@@ -7,7 +7,7 @@ ALL=./...
 
 .EXPORT_ALL_VARIABLES:
 
-.PHONY: all test install
+.PHONY: all docs test install
 
 all: test install
 install: docs

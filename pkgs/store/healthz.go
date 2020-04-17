@@ -17,6 +17,7 @@ var GitState string
 // BuildDate The date the binary was built
 var BuildDate string
 
+// Healthz healthz
 func Healthz() models.Healthz {
 	return models.Healthz{
 		BuildInfo: &models.BuildInfo{
