@@ -26,3 +26,31 @@ func CreateRating(rating models.Rating) (models.Rating, error) {
 	err := db.Create(&rating).Error
 	return rating, err
 }
+
+// GetRating gets a rating
+func GetRating(id uint) (models.Rating, error) {
+	var rating models.Rating
+	err := db.Where("ID = ?", id).Find(&rating).Error
+	return rating, err
+}
+
+// UpdateRating updates a rating
+func UpdateRating(id uint, rating models.Rating) (models.Rating, error) {
+	// make sure payload contains correct id
+	if id != rating.ID {
+		return rating, errors.New("invalid id")
+	}
+	// make sure rating exists
+	_, err := GetRating(id)
+	if err != nil {
+		return rating, err
+	}
+	err = db.Save(&rating).Error
+	return rating, err
+}
+
+// DeleteRating deletes a rating
+func DeleteRating(id uint) {
+	var rating models.Rating
+	db.Where("ID = ?", id).Delete(rating)
+}

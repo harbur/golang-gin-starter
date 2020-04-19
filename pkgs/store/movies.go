@@ -47,7 +47,7 @@ func UpdateMovie(id uint, movie models.Movie) (models.Movie, error) {
 	return movie, err
 }
 
-// DeleteMovie deletes a movies
+// DeleteMovie deletes a movie
 func DeleteMovie(id uint) {
 	var movie models.Movie
 	db.Where("ID = ?", id).Delete(movie)

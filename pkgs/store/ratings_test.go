@@ -19,7 +19,7 @@ func TestListRatingsOK(t *testing.T) {
 
 	rating := models.Rating{
 		Rating: 1,
-		Movie:  movie,
+		Movie:  &movie,
 	}
 
 	// movies list is empty

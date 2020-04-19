@@ -7,6 +7,13 @@ definitions:
     required:
     - name
     type: object
+  models.Rating:
+    properties:
+      rating:
+        type: integer
+    required:
+    - rating
+    type: object
 info:
   contact:
     email: contact@harbur.io
@@ -137,4 +144,133 @@ paths:
       summary: puts a movie
       tags:
       - movies
+  /movies/{movieID}/ratings:
+    get:
+      consumes:
+      - application/json
+      description: lists ratings
+      parameters:
+      - description: Movie ID
+        in: path
+        name: movieID
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: lists ratings
+      tags:
+      - ratings
+    post:
+      consumes:
+      - application/json
+      description: posts a rating
+      parameters:
+      - description: Movie ID
+        in: path
+        name: movieID
+        required: true
+        type: integer
+      - description: Rating
+        in: body
+        name: rating
+        required: true
+        schema:
+          $ref: '#/definitions/models.Rating'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: posts a rating
+      tags:
+      - ratings
+  /movies/{movieID}/ratings/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: deletes a rating
+      parameters:
+      - description: Movie ID
+        in: path
+        name: movieID
+        required: true
+        type: integer
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: ok
+          schema:
+            type: string
+      summary: deletes a rating
+      tags:
+      - ratings
+    get:
+      consumes:
+      - application/json
+      description: gets a rating
+      parameters:
+      - description: Movie ID
+        in: path
+        name: movieID
+        required: true
+        type: integer
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: gets a rating
+      tags:
+      - ratings
+    put:
+      consumes:
+      - application/json
+      description: puts a rating
+      parameters:
+      - description: Movie ID
+        in: path
+        name: movieID
+        required: true
+        type: integer
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Rating
+        in: body
+        name: rating
+        required: true
+        schema:
+          $ref: '#/definitions/models.Rating'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: puts a rating
+      tags:
+      - ratings
 swagger: "2.0"
