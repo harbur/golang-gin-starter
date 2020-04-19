@@ -58,12 +58,12 @@ func PostMovie(c *gin.Context) {
 // @Tags movies
 // @Accept json
 // @Produce json
-// @Param   id     path    int     true        "ID"
+// @Param   movieID     path    int     true        "Movie ID"
 // @Success 200 {string} string	"ok"
-// @Router /movies/{id} [get]
+// @Router /movies/{movieID} [get]
 func GetMovie(c *gin.Context) {
 	log.Info("get movie")
-	id, _ := strconv.ParseInt(c.Params.ByName("id"), 0, 64)
+	id, _ := strconv.ParseInt(c.Params.ByName("movieID"), 0, 64)
 	response, err := store.GetMovie(uint(id))
 	if err != nil {
 		utils.ErrorHandler(c, err)
@@ -79,13 +79,13 @@ func GetMovie(c *gin.Context) {
 // @Tags movies
 // @Accept json
 // @Produce json
-// @Param   id     path    int     true        "ID"
+// @Param   movieID     path    int     true        "Movie ID"
 // @Param movie body models.Movie true "Movie"
 // @Success 200 {string} string	"ok"
-// @Router /movies/{id} [put]
+// @Router /movies/{movieID} [put]
 func PutMovie(c *gin.Context) {
 	log.Info("put movie")
-	id, _ := strconv.ParseInt(c.Params.ByName("id"), 0, 64)
+	id, _ := strconv.ParseInt(c.Params.ByName("movieID"), 0, 64)
 	var movie models.Movie
 	if err := c.BindJSON(&movie); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -108,12 +108,12 @@ func PutMovie(c *gin.Context) {
 // @Tags movies
 // @Accept json
 // @Produce json
-// @Param   id     path    int     true        "ID"
+// @Param   movieID     path    int     true        "Movie ID"
 // @Success 204 {string} string	"ok"
-// @Router /movies/{id} [delete]
+// @Router /movies/{movieID} [delete]
 func DeleteMovie(c *gin.Context) {
 	log.Info("delete movie")
-	id, _ := strconv.ParseInt(c.Params.ByName("id"), 0, 64)
+	id, _ := strconv.ParseInt(c.Params.ByName("movieID"), 0, 64)
 	store.DeleteMovie(uint(id))
 
 	c.Status(http.StatusNoContent)

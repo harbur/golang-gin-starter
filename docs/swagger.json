@@ -94,7 +94,7 @@
                 }
             }
         },
-        "/movies/{id}": {
+        "/movies/{movieID}": {
             "get": {
                 "description": "gets a movie",
                 "consumes": [
@@ -110,8 +110,8 @@
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "ID",
-                        "name": "id",
+                        "description": "Movie ID",
+                        "name": "movieID",
                         "in": "path",
                         "required": true
                     }
@@ -140,8 +140,8 @@
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "ID",
-                        "name": "id",
+                        "description": "Movie ID",
+                        "name": "movieID",
                         "in": "path",
                         "required": true
                     },
@@ -179,8 +179,8 @@
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "ID",
-                        "name": "id",
+                        "description": "Movie ID",
+                        "name": "movieID",
                         "in": "path",
                         "required": true
                     }

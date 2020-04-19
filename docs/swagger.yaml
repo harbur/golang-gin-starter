@@ -77,15 +77,15 @@ paths:
       summary: posts a movie
       tags:
       - movies
-  /movies/{id}:
+  /movies/{movieID}:
     delete:
       consumes:
       - application/json
       description: deletes a movie
       parameters:
-      - description: ID
+      - description: Movie ID
         in: path
-        name: id
+        name: movieID
         required: true
         type: integer
       produces:
@@ -103,9 +103,9 @@ paths:
       - application/json
       description: gets a movie
       parameters:
-      - description: ID
+      - description: Movie ID
         in: path
-        name: id
+        name: movieID
         required: true
         type: integer
       produces:
@@ -123,9 +123,9 @@ paths:
       - application/json
       description: puts a movie
       parameters:
-      - description: ID
+      - description: Movie ID
         in: path
-        name: id
+        name: movieID
         required: true
         type: integer
       - description: Movie
