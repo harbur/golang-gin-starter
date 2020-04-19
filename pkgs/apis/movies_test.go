@@ -97,7 +97,7 @@ func TestGetMovieWithRouterOK(t *testing.T) {
 	// prepare
 	store.Connect()
 	router := gin.New()
-	router.GET("/api/movies/:id", GetMovie)
+	router.GET("/api/movies/:movieID", GetMovie)
 
 	body := models.Movie{
 		Name: "godfather",
@@ -122,7 +122,7 @@ func TestGetMovieErrorNotFound(t *testing.T) {
 	// prepare
 	store.Connect()
 	router := gin.New()
-	router.GET("/api/movies/:id", GetMovie)
+	router.GET("/api/movies/:movieID", GetMovie)
 
 	body := models.Movie{
 		Name: "godfather",
@@ -145,7 +145,7 @@ func TestPutMovieWithRouterOK(t *testing.T) {
 	// prepare
 	store.Connect()
 	router := gin.New()
-	router.PUT("/api/movies/:id", PutMovie)
+	router.PUT("/api/movies/:movieID", PutMovie)
 
 	body := models.Movie{
 		Name: "godfather",
@@ -171,7 +171,7 @@ func TestPutMovieErrorNotFound(t *testing.T) {
 	// prepare
 	store.Connect()
 	router := gin.New()
-	router.PUT("/api/movies/:id", PutMovie)
+	router.PUT("/api/movies/:movieID", PutMovie)
 
 	body := models.Movie{
 		Model: gorm.Model{ID: 1},
@@ -195,7 +195,7 @@ func TestPutMovieWithRouterErrorNameIsRequired(t *testing.T) {
 	// prepare
 	store.Connect()
 	router := gin.New()
-	router.PUT("/api/movies/:id", PutMovie)
+	router.PUT("/api/movies/:movieID", PutMovie)
 
 	body := models.Movie{
 		Model: gorm.Model{ID: 1},
@@ -218,7 +218,7 @@ func TestDeleteMovieOK(t *testing.T) {
 	// prepare
 	store.Connect()
 	router := gin.New()
-	router.DELETE("/api/movies/:id", DeleteMovie)
+	router.DELETE("/api/movies/:movieID", DeleteMovie)
 
 	body := models.Movie{
 		Name: "godfather",
