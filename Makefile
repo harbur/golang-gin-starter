@@ -11,7 +11,7 @@ ALL=./...
 
 all: test install
 install: docs
-	govvv install
+	govvv install -pkg github.com/harbur/golang-gin-starter/pkgs/store
 test:
 	./scripts/coverage.sh
 run: docs
