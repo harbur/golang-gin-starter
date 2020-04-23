@@ -30,3 +30,8 @@ changelog:
 	conventional-changelog -r0 > CHANGELOG.md
 	git add CHANGELOG.md
 	git commit -m "chore(changelog) update changelog"
+
+setup:
+	go get -u github.com/ahmetb/govvv
+	go get -u github.com/pilu/fresh
+	go get -u github.com/swaggo/swag/cmd/swag
