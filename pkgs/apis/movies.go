@@ -49,7 +49,7 @@ func PostMovie(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, response)
+	c.JSON(http.StatusCreated, response)
 }
 
 // GetMovie gets a movie

@@ -14,8 +14,13 @@ install: docs
 	govvv install -pkg github.com/harbur/golang-gin-starter/pkgs/store
 test:
 	./scripts/coverage.sh
-run: docs
-	fresh
+
+generate:
+	swag init
+
+run:
+	air
+
 deps:
 	go mod download
 	go mod tidy
@@ -33,5 +38,5 @@ changelog:
 
 setup:
 	go get -u github.com/ahmetb/govvv
-	go get -u github.com/pilu/fresh
+	go get -u github.com/cosmtrek/air
 	go get -u github.com/swaggo/swag/cmd/swag
