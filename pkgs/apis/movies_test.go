@@ -46,7 +46,7 @@ func TestPostMovieWithRouterOK(t *testing.T) {
 	router.ServeHTTP(w, req)
 
 	// assert
-	assert.Equal(t, 200, w.Code)
+	assert.Equal(t, 201, w.Code)
 	assert.Regexp(t, `{"ID":1,"CreatedAt":".*","UpdatedAt":".*","DeletedAt":null,"name":"godfather"}`, w.Body.String())
 }
 
