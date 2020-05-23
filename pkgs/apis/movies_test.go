@@ -14,14 +14,14 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestGetMoviesWithFuncOK(t *testing.T) {
+func TestListMoviesWithFuncOK(t *testing.T) {
 	// prepare
 	store.Connect()
 	w := httptest.NewRecorder()
 	c, _ := gin.CreateTestContext(w)
 
 	// test
-	GetMovies(c)
+	ListMovies(c)
 
 	// assert
 	assert.Equal(t, 200, w.Code)

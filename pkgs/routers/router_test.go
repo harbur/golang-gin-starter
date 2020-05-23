@@ -1,6 +1,8 @@
 package routers
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestRouterOK(t *testing.T) {
 	SetupRouter()

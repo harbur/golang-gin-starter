@@ -6,13 +6,14 @@ import (
 
 	"github.com/gin-gonic/gin"
 
+	"github.com/harbur/golang-gin-starter/pkgs/clients/prometheus"
 	"github.com/harbur/golang-gin-starter/pkgs/models"
 	"github.com/harbur/golang-gin-starter/pkgs/store"
 	"github.com/harbur/golang-gin-starter/pkgs/utils"
 	log "github.com/sirupsen/logrus"
 )
 
-// GetMovies lists movies
+// ListMovies lists movies
 // @Summary lists movies
 // @Description lists movies
 // @Tags movies
@@ -20,9 +21,11 @@ import (
 // @Produce json
 // @Success 200 {string} string	"ok"
 // @Router /movies [get]
-func GetMovies(c *gin.Context) {
-	log.Info("get movies")
+func ListMovies(c *gin.Context) {
+	log.Info("list movies")
 	response := store.ListMovies()
+
+	prometheus.IncrementAction("list movies")
 	c.JSON(http.StatusOK, response)
 }
 
