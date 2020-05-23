@@ -13,9 +13,9 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-// ListMovies lists movies
-// @Summary lists movies
-// @Description lists movies
+// ListMovies list movies
+// @Summary list movies
+// @Description list movies
 // @Tags movies
 // @Accept json
 // @Produce json
@@ -29,9 +29,9 @@ func ListMovies(c *gin.Context) {
 	c.JSON(http.StatusOK, response)
 }
 
-// PostMovie posts a movie
-// @Summary posts a movie
-// @Description posts a movie
+// PostMovie post movie
+// @Summary post movie
+// @Description post movie
 // @Tags movies
 // @Accept json
 // @Produce json
@@ -52,12 +52,13 @@ func PostMovie(c *gin.Context) {
 		return
 	}
 
+	prometheus.IncrementAction("post movie")
 	c.JSON(http.StatusCreated, response)
 }
 
-// GetMovie gets a movie
-// @Summary gets a movie
-// @Description gets a movie
+// GetMovie get movie
+// @Summary get movie
+// @Description get movie
 // @Tags movies
 // @Accept json
 // @Produce json
@@ -72,13 +73,13 @@ func GetMovie(c *gin.Context) {
 		utils.ErrorHandler(c, err)
 		return
 	}
-
+	prometheus.IncrementAction("get movie")
 	c.JSON(http.StatusOK, response)
 }
 
-// PutMovie puts a movie
-// @Summary puts a movie
-// @Description puts a movie
+// PutMovie put movie
+// @Summary put movie
+// @Description put movie
 // @Tags movies
 // @Accept json
 // @Produce json
@@ -102,12 +103,13 @@ func PutMovie(c *gin.Context) {
 		return
 	}
 
+	prometheus.IncrementAction("put movie")
 	c.JSON(http.StatusOK, response)
 }
 
-// DeleteMovie deletes a movie
-// @Summary deletes a movie
-// @Description deletes a movie
+// DeleteMovie delete movie
+// @Summary delete movie
+// @Description delete movie
 // @Tags movies
 // @Accept json
 // @Produce json
@@ -119,5 +121,6 @@ func DeleteMovie(c *gin.Context) {
 	id, _ := strconv.ParseInt(c.Params.ByName("id"), 0, 64)
 	store.DeleteMovie(uint(id))
 
+	prometheus.IncrementAction("delete movie")
 	c.Status(http.StatusNoContent)
 }

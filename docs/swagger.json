@@ -41,7 +41,7 @@
         },
         "/movies": {
             "get": {
-                "description": "lists movies",
+                "description": "list movies",
                 "consumes": [
                     "application/json"
                 ],
@@ -51,7 +51,7 @@
                 "tags": [
                     "movies"
                 ],
-                "summary": "lists movies",
+                "summary": "list movies",
                 "responses": {
                     "200": {
                         "description": "ok",
@@ -62,7 +62,7 @@
                 }
             },
             "post": {
-                "description": "posts a movie",
+                "description": "post movie",
                 "consumes": [
                     "application/json"
                 ],
@@ -72,7 +72,7 @@
                 "tags": [
                     "movies"
                 ],
-                "summary": "posts a movie",
+                "summary": "post movie",
                 "parameters": [
                     {
                         "description": "Movie",
@@ -96,7 +96,7 @@
         },
         "/movies/{id}": {
             "get": {
-                "description": "gets a movie",
+                "description": "get movie",
                 "consumes": [
                     "application/json"
                 ],
@@ -106,7 +106,7 @@
                 "tags": [
                     "movies"
                 ],
-                "summary": "gets a movie",
+                "summary": "get movie",
                 "parameters": [
                     {
                         "type": "integer",
@@ -126,7 +126,7 @@
                 }
             },
             "put": {
-                "description": "puts a movie",
+                "description": "put movie",
                 "consumes": [
                     "application/json"
                 ],
@@ -136,7 +136,7 @@
                 "tags": [
                     "movies"
                 ],
-                "summary": "puts a movie",
+                "summary": "put movie",
                 "parameters": [
                     {
                         "type": "integer",
@@ -165,7 +165,7 @@
                 }
             },
             "delete": {
-                "description": "deletes a movie",
+                "description": "delete movie",
                 "consumes": [
                     "application/json"
                 ],
@@ -175,7 +175,7 @@
                 "tags": [
                     "movies"
                 ],
-                "summary": "deletes a movie",
+                "summary": "delete movie",
                 "parameters": [
                     {
                         "type": "integer",
