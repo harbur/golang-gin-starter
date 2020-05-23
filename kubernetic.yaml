@@ -1,5 +1,5 @@
 images:
-  - name: woven-computing-234012/golang-demo
+  - name: woven-computing-234012/golang-gin-starter
     path: Dockerfile
     context: .
     tags:
@@ -7,10 +7,10 @@ images:
       - ${GIT_COMMIT_SHORT}
       - ${GIT_BRANCH}-${BUILD_NUMBER}
 charts:
-  - charts/golang-demo
+  - charts/golang-gin-starter
 releases:
-  - name: golang-demo
+  - name: golang-gin-starter
     namespace: kc-demo
-    path: charts/golang-demo
+    path: charts/golang-gin-starter
     values:
     - releases/secrets.yaml
