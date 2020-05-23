@@ -9,10 +9,10 @@ ALL=./...
 
 .PHONY: all docs test install
 
-all: test install
+all: docs test install
 install: docs
 	govvv install -pkg github.com/harbur/golang-gin-starter/pkgs/store
-test:
+test: docs
 	./scripts/coverage.sh
 
 generate:
