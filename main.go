@@ -1,6 +1,8 @@
 package main
 
 import (
+	"flag"
+
 	_ "github.com/harbur/golang-gin-starter/docs"
 	"github.com/harbur/golang-gin-starter/pkgs/routers"
 )
@@ -19,5 +21,9 @@ import (
 // @BasePath /api/
 func main() {
 	r := routers.SetupRouter()
-	r.Run("localhost:8080")
+
+	addr := flag.String("address", "localhost:8080", "server address (default: 'localhost:8080')")
+	flag.Parse()
+
+	r.Run(*addr)
 }
