@@ -4,7 +4,6 @@ RUN apk add --no-cache g++ make git
 COPY Makefile .
 RUN make setup
 
-WORKDIR /go/src/github.com/harbur/golang-gin-starter
 COPY . .
 RUN make deps test install
 
