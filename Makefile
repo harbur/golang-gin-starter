@@ -21,7 +21,7 @@ generate:
 run:
 	air
 
-deps:
+deps: docs
 	go mod download
 	go mod tidy
 	go mod verify

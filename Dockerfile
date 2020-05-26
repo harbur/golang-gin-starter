@@ -6,7 +6,7 @@ RUN make setup
 
 WORKDIR /go/src/github.com/harbur/golang-gin-starter
 COPY . .
-RUN make test install
+RUN make deps test install
 
 # Runtime Image
 FROM golang:1.11.5-alpine
