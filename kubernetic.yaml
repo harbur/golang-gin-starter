@@ -14,3 +14,5 @@ releases:
     path: charts/golang-gin-starter
     values:
     - releases/secrets.yaml
+    set:
+    - image.tag=${GIT_BRANCH}-${BUILD_NUMBER}
