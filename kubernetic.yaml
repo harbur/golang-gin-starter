@@ -10,7 +10,7 @@ charts:
   - charts/golang-gin-starter
 releases:
   - name: golang-gin-starter
-    namespace: kc-demo
+    namespace: starters-pro
     path: charts/golang-gin-starter
     values:
     - releases/secrets.yaml
