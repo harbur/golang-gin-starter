@@ -23,11 +23,11 @@ ingress:
     kubernetes.io/tls-acme: "true"
   path: /
   hosts:
-    - golang-demo.pro.harbur.io
+    - golang-gin-starter.pro.harbur.io
   tls:
-   - secretName: golang-demo-tls
+   - secretName: golang-gin-starter-tls
      hosts:
-       - golang-demo.pro.harbur.io
+       - golang-gin-starter.pro.harbur.io
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
