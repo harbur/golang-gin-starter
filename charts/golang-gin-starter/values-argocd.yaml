@@ -1,2 +1,5 @@
 image:
   repository: spiddy/golang-gin-starter
+
+ingress:
+  enabled: false
