@@ -9,3 +9,4 @@ charts:
 rollouts:
   - resource: deployment/golang-gin-starter
     namespace: starters-pro
+    branch: master
