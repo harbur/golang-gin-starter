@@ -4,15 +4,8 @@ images:
     context: .
     tags:
       - ${GIT_BRANCH}
-      - ${GIT_COMMIT_SHORT}
-      - ${GIT_BRANCH}-${BUILD_NUMBER}
 charts:
   - charts/golang-gin-starter
-releases:
-  - name: golang-gin-starter
+rollouts:
+  - resource: deployment/golang-gin-starter
     namespace: starters-pro
-    path: charts/golang-gin-starter
-    values:
-    - releases/secrets.yaml
-    set:
-    - image.tag=${GIT_BRANCH}-${BUILD_NUMBER}
