@@ -10,7 +10,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/harbur/golang-gin-starter/pkgs/models"
 	"github.com/harbur/golang-gin-starter/pkgs/store"
-	"github.com/jinzhu/gorm"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -57,8 +56,8 @@ func TestPostMovieWithRouterErrorInvalidID(t *testing.T) {
 	router.POST("/api/movies", PostMovie)
 
 	body := &models.Movie{
-		Model: gorm.Model{ID: 1},
-		Name:  "godfather",
+		ID:   1,
+		Name: "godfather",
 	}
 	buf := new(bytes.Buffer)
 	json.NewEncoder(buf).Encode(body)
@@ -174,8 +173,8 @@ func TestPutMovieErrorNotFound(t *testing.T) {
 	router.PUT("/api/movies/:id", PutMovie)
 
 	body := models.Movie{
-		Model: gorm.Model{ID: 1},
-		Name:  "godfather 2",
+		ID:   1,
+		Name: "godfather 2",
 	}
 
 	buf := new(bytes.Buffer)
@@ -198,7 +197,7 @@ func TestPutMovieWithRouterErrorNameIsRequired(t *testing.T) {
 	router.PUT("/api/movies/:id", PutMovie)
 
 	body := models.Movie{
-		Model: gorm.Model{ID: 1},
+		ID: 1,
 	}
 
 	buf := new(bytes.Buffer)

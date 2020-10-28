@@ -3,7 +3,6 @@ package store
 import (
 	"testing"
 
-	"github.com/jinzhu/gorm"
 	"github.com/stretchr/testify/assert"
 
 	"github.com/harbur/golang-gin-starter/pkgs/models"
@@ -33,8 +32,8 @@ func TestCreateMovieErrorInvalidID(t *testing.T) {
 	// Prepare
 	Connect()
 	movie := models.Movie{
-		Model: gorm.Model{ID: 1},
-		Name:  "godfather",
+		ID:   1,
+		Name: "godfather",
 	}
 
 	// Command
@@ -97,8 +96,8 @@ func TestUpdateMovieErrorNotFound(t *testing.T) {
 	// Prepare
 	Connect()
 	movie := models.Movie{
-		Model: gorm.Model{ID: 1},
-		Name:  "godfather 2",
+		ID:   1,
+		Name: "godfather 2",
 	}
 
 	// Command
