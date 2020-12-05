@@ -3,6 +3,7 @@ package apis
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -15,7 +16,6 @@ import (
 
 func TestListMoviesWithFuncOK(t *testing.T) {
 	// prepare
-	store.Connect()
 	w := httptest.NewRecorder()
 	c, _ := gin.CreateTestContext(w)
 
@@ -24,12 +24,11 @@ func TestListMoviesWithFuncOK(t *testing.T) {
 
 	// assert
 	assert.Equal(t, 200, w.Code)
-	assert.Equal(t, "[]", w.Body.String())
+	assert.Equal(t, `{"movies":[]}`, w.Body.String())
 }
 
 func TestPostMovieWithRouterOK(t *testing.T) {
 	// prepare
-	store.Connect()
 	router := gin.New()
 	router.POST("/api/movies", PostMovie)
 
@@ -46,12 +45,11 @@ func TestPostMovieWithRouterOK(t *testing.T) {
 
 	// assert
 	assert.Equal(t, 201, w.Code)
-	assert.Regexp(t, `{"ID":1,"CreatedAt":".*","UpdatedAt":".*","DeletedAt":null,"name":"godfather"}`, w.Body.String())
+	assert.Regexp(t, `{"id":.*,"name":"godfather"}`, w.Body.String())
 }
 
 func TestPostMovieWithRouterErrorInvalidID(t *testing.T) {
 	// prepare
-	store.Connect()
 	router := gin.New()
 	router.POST("/api/movies", PostMovie)
 
@@ -74,7 +72,6 @@ func TestPostMovieWithRouterErrorInvalidID(t *testing.T) {
 
 func TestPostMovieWithRouterErrorNameIsRequired(t *testing.T) {
 	// prepare
-	store.Connect()
 	router := gin.New()
 	router.POST("/api/movies", PostMovie)
 
@@ -94,14 +91,13 @@ func TestPostMovieWithRouterErrorNameIsRequired(t *testing.T) {
 
 func TestGetMovieWithRouterOK(t *testing.T) {
 	// prepare
-	store.Connect()
 	router := gin.New()
 	router.GET("/api/movies/:id", GetMovie)
 
 	body := models.Movie{
 		Name: "godfather",
 	}
-	_, err := store.CreateMovie(body)
+	_, err := store.Movies.CreateMovie(body)
 	assert.NoError(t, err)
 
 	buf := new(bytes.Buffer)
@@ -114,12 +110,11 @@ func TestGetMovieWithRouterOK(t *testing.T) {
 
 	// assert
 	assert.Equal(t, 200, w.Code)
-	assert.Regexp(t, `{"ID":1,"CreatedAt":".*","UpdatedAt":".*","DeletedAt":null,"name":"godfather"}`, w.Body.String())
+	assert.Regexp(t, `{"id":.*,"name":"godfather"}`, w.Body.String())
 }
 
 func TestGetMovieErrorNotFound(t *testing.T) {
 	// prepare
-	store.Connect()
 	router := gin.New()
 	router.GET("/api/movies/:id", GetMovie)
 
@@ -132,7 +127,7 @@ func TestGetMovieErrorNotFound(t *testing.T) {
 
 	// test
 	w := httptest.NewRecorder()
-	req, _ := http.NewRequest("GET", "/api/movies/1", buf)
+	req, _ := http.NewRequest("GET", "/api/movies/999999", buf)
 	router.ServeHTTP(w, req)
 
 	// assert
@@ -142,14 +137,13 @@ func TestGetMovieErrorNotFound(t *testing.T) {
 
 func TestPutMovieWithRouterOK(t *testing.T) {
 	// prepare
-	store.Connect()
 	router := gin.New()
 	router.PUT("/api/movies/:id", PutMovie)
 
 	body := models.Movie{
 		Name: "godfather",
 	}
-	body, err := store.CreateMovie(body)
+	body, err := store.Movies.CreateMovie(body)
 	assert.NoError(t, err)
 	body.Name = "godfather 2"
 
@@ -158,22 +152,21 @@ func TestPutMovieWithRouterOK(t *testing.T) {
 
 	// test
 	w := httptest.NewRecorder()
-	req, _ := http.NewRequest("PUT", "/api/movies/1", buf)
+	req, _ := http.NewRequest("PUT", "/api/movies/"+fmt.Sprint(body.ID), buf)
 	router.ServeHTTP(w, req)
 
 	// assert
 	assert.Equal(t, 200, w.Code)
-	assert.Regexp(t, `{"ID":1,"CreatedAt":".*","UpdatedAt":".*","DeletedAt":null,"name":"godfather 2"}`, w.Body.String())
+	assert.Regexp(t, `{"id":.*,"name":"godfather 2"}`, w.Body.String())
 }
 
 func TestPutMovieErrorNotFound(t *testing.T) {
 	// prepare
-	store.Connect()
 	router := gin.New()
 	router.PUT("/api/movies/:id", PutMovie)
 
 	body := models.Movie{
-		ID:   1,
+		ID:   99999,
 		Name: "godfather 2",
 	}
 
@@ -182,7 +175,7 @@ func TestPutMovieErrorNotFound(t *testing.T) {
 
 	// test
 	w := httptest.NewRecorder()
-	req, _ := http.NewRequest("PUT", "/api/movies/1", buf)
+	req, _ := http.NewRequest("PUT", "/api/movies/99999", buf)
 	router.ServeHTTP(w, req)
 
 	// assert
@@ -192,7 +185,6 @@ func TestPutMovieErrorNotFound(t *testing.T) {
 
 func TestPutMovieWithRouterErrorNameIsRequired(t *testing.T) {
 	// prepare
-	store.Connect()
 	router := gin.New()
 	router.PUT("/api/movies/:id", PutMovie)
 
@@ -215,14 +207,13 @@ func TestPutMovieWithRouterErrorNameIsRequired(t *testing.T) {
 
 func TestDeleteMovieOK(t *testing.T) {
 	// prepare
-	store.Connect()
 	router := gin.New()
 	router.DELETE("/api/movies/:id", DeleteMovie)
 
 	body := models.Movie{
 		Name: "godfather",
 	}
-	body, err := store.CreateMovie(body)
+	body, err := store.Movies.CreateMovie(body)
 	assert.NoError(t, err)
 
 	buf := new(bytes.Buffer)

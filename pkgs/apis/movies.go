@@ -23,7 +23,7 @@ import (
 // @Router /movies [get]
 func ListMovies(c *gin.Context) {
 	log.Info("list movies")
-	response := store.ListMovies()
+	response := store.Movies.ListMovies()
 
 	prometheus.IncrementAction("list movies")
 	c.JSON(http.StatusOK, response)
@@ -46,7 +46,7 @@ func PostMovie(c *gin.Context) {
 		return
 	}
 
-	response, err := store.CreateMovie(movie)
+	response, err := store.Movies.CreateMovie(movie)
 	if err != nil {
 		utils.ErrorHandler(c, err)
 		return
@@ -68,7 +68,7 @@ func PostMovie(c *gin.Context) {
 func GetMovie(c *gin.Context) {
 	log.Info("get movie")
 	id, _ := strconv.ParseInt(c.Params.ByName("id"), 0, 64)
-	response, err := store.GetMovie(uint(id))
+	response, err := store.Movies.GetMovie(uint(id))
 	if err != nil {
 		utils.ErrorHandler(c, err)
 		return
@@ -96,7 +96,7 @@ func PutMovie(c *gin.Context) {
 		return
 	}
 
-	response, err := store.UpdateMovie(uint(id), movie)
+	response, err := store.Movies.UpdateMovie(uint(id), movie)
 	if err != nil {
 		log.Info(err.Error())
 		utils.ErrorHandler(c, err)
@@ -119,7 +119,7 @@ func PutMovie(c *gin.Context) {
 func DeleteMovie(c *gin.Context) {
 	log.Info("delete movie")
 	id, _ := strconv.ParseInt(c.Params.ByName("id"), 0, 64)
-	store.DeleteMovie(uint(id))
+	store.Movies.DeleteMovie(uint(id))
 
 	prometheus.IncrementAction("delete movie")
 	c.Status(http.StatusNoContent)
