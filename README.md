@@ -23,3 +23,6 @@ These are the important pieces we use:
 
 [go mod]: https://blog.golang.org/using-go-modules
 [govvv]: https://github.com/ahmetb/govvv
+
+[Golang]: https://golang.org/
+[SwaggerUI]: https://swagger.io/tools/swagger-ui/
