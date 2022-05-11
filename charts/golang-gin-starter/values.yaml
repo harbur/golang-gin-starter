@@ -23,7 +23,9 @@ ingress:
     kubernetes.io/tls-acme: "true"
   path: /
   hosts:
-    - golang-gin-starter.pro.harbur.io
+    - host: golang-gin-starter.pro.harbur.io
+      paths: 
+        - path: /
   tls:
    - secretName: golang-gin-starter-tls
      hosts:
