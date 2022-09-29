@@ -17,19 +17,21 @@ service:
   port: 80
 
 ingress:
-  enabled: true
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    kubernetes.io/tls-acme: "true"
-  path: /
+  enabled: false
+  # ingressClassName:
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  paths:
+    - /
   hosts:
-    - host: golang-gin-starter.pro.harbur.io
-      paths: 
+    - host: chart-example.local
+      paths:
         - path: /
-  tls:
-   - secretName: golang-gin-starter-tls
-     hosts:
-       - golang-gin-starter.pro.harbur.io
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
