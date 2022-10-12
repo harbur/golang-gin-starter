@@ -13,6 +13,7 @@ import (
 func SetupRouter() *gin.Engine {
 	// Creates a router without any middleware by default
 	r := gin.Default()
+	r.SetTrustedProxies([]string{"localhost"})
 
 	// Add Prometheus metrics
 	p := ginprometheus.NewPrometheus("gin")

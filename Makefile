@@ -36,6 +36,6 @@ changelog:
 	git commit -m "chore(changelog) update changelog"
 
 setup:
-	go get -u github.com/ahmetb/govvv
-	go get -u github.com/cosmtrek/air
-	go get -u github.com/swaggo/swag/cmd/swag
+	go install github.com/ahmetb/govvv@latest
+	go install github.com/cosmtrek/air@latest
+	go install github.com/swaggo/swag/cmd/swag@v1.7.8
