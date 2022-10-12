@@ -23,7 +23,7 @@ import (
 // @Router /movies [get]
 func ListMovies(c *gin.Context) {
 	log.Info("list movies")
-	response := store.Movies.ListMovies()
+	response := store.Movies.ListMovies().Movies
 
 	prometheus.IncrementAction("list movies")
 	c.JSON(http.StatusOK, response)

@@ -24,7 +24,7 @@ func TestListMoviesWithFuncOK(t *testing.T) {
 
 	// assert
 	assert.Equal(t, 200, w.Code)
-	assert.Equal(t, `{"movies":[]}`, w.Body.String())
+	assert.Equal(t, `[]`, w.Body.String())
 }
 
 func TestPostMovieWithRouterOK(t *testing.T) {
