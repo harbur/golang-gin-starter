@@ -16,7 +16,7 @@ import (
 // @contact.email contact@harbur.io
 
 // @license.name MIT
-// @license.url https://github.com/harbur/golang-gin-starter/blob/master/LICENSE
+// @license.url https://github.com/harbur/golang-gin-starter/blob/main/LICENSE
 
 // @BasePath /api/
 func main() {

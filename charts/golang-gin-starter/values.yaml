@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: eu.gcr.io/woven-computing-234012/golang-gin-starter
-  tag: master
+  tag: main
   pullPolicy: Always
 
 nameOverride: ""
