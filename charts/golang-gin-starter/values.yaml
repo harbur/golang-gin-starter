@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: eu.gcr.io/woven-computing-234012/golang-gin-starter
+  repository: ghcr.io/harbur/golang-gin-starter
   tag: main
   pullPolicy: Always
 
