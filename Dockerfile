@@ -1,16 +1,15 @@
 # Build Image
-FROM golang:1.23.5-alpine AS build
-RUN apk add --no-cache g++ make git
+FROM golang:1.23.5-bullseye AS build
+RUN apt-get update && apt-get install -y gcc libc-dev sqlite3
 WORKDIR /go/src/github.com/harbur/golang-gin-starter
 COPY Makefile .
 RUN make setup
 
 COPY . .
-ENV CGO_ENABLED=0
 RUN make install
 
 # Runtime Image
-FROM golang:1.23.5-alpine
+FROM golang:1.23.5-bullseye
 COPY --from=build /go/bin/golang-gin-starter /bin/
 
 EXPOSE 8080
