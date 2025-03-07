@@ -1,6 +1,6 @@
 module github.com/harbur/golang-gin-starter
 
-go 1.23.5
+go 1.23
 
 require (
 	github.com/gin-gonic/gin v1.8.1
