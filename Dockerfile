@@ -6,6 +6,7 @@ COPY Makefile .
 RUN make setup
 
 COPY . .
+ENV CGO_ENABLED=0
 RUN make install
 
 # Runtime Image
