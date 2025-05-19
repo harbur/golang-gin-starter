@@ -1,0 +1,142 @@
+basePath: /api/
+definitions:
+  models.Movie:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    required:
+    - name
+    type: object
+info:
+  contact:
+    email: contact@harbur.io
+    name: API Support
+  description: Golang Starter.
+  license:
+    name: MIT
+    url: https://github.com/harbur/golang-gin-starter/blob/main/LICENSE
+  termsOfService: http://swagger.io/terms/
+  title: Golang Starter
+  version: 1.0.0
+paths:
+  /healthz:
+    get:
+      consumes:
+      - application/json
+      description: healthz
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: ok
+          schema:
+            type: string
+      summary: healthz
+      tags:
+      - healthz
+  /movies:
+    get:
+      consumes:
+      - application/json
+      description: list movies
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: list movies
+      tags:
+      - movies
+    post:
+      consumes:
+      - application/json
+      description: post movie
+      parameters:
+      - description: Movie
+        in: body
+        name: movie
+        required: true
+        schema:
+          $ref: '#/definitions/models.Movie'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: post movie
+      tags:
+      - movies
+  /movies/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: delete movie
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: ok
+          schema:
+            type: string
+      summary: delete movie
+      tags:
+      - movies
+    get:
+      consumes:
+      - application/json
+      description: get movie
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: get movie
+      tags:
+      - movies
+    put:
+      consumes:
+      - application/json
+      description: put movie
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Movie
+        in: body
+        name: movie
+        required: true
+        schema:
+          $ref: '#/definitions/models.Movie'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: put movie
+      tags:
+      - movies
+swagger: "2.0"
