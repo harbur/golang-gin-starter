@@ -8,7 +8,7 @@ require (
 	github.com/prometheus/client_golang v1.13.0
 	github.com/sirupsen/logrus v1.9.0
 	github.com/stretchr/testify v1.9.0
-	github.com/swaggo/gin-swagger v1.2.0
+	github.com/swaggo/gin-swagger v1.6.0
 	github.com/swaggo/swag v1.16.3
 	github.com/zsais/go-gin-prometheus v0.1.0
 	gotest.tools v2.2.0+incompatible
