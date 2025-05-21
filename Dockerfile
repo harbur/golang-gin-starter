@@ -1,5 +1,5 @@
 # Build Image
-FROM golang:1.23.5-bullseye AS build
+FROM golang:1.24.3-bullseye AS build
 RUN apt-get update && apt-get install -y gcc libc-dev sqlite3
 WORKDIR /go/src/github.com/harbur/golang-gin-starter
 COPY Makefile .
@@ -9,7 +9,7 @@ COPY . .
 RUN make install
 
 # Runtime Image
-FROM golang:1.23.5-bullseye
+FROM golang:1.24.3-bullseye
 COPY --from=build /go/bin/golang-gin-starter /bin/
 
 EXPOSE 8080
