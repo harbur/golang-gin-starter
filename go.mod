@@ -2,7 +2,7 @@ module github.com/harbur/golang-gin-starter
 
 go 1.24.3
 
-toolchain go1.25.7
+toolchain go1.26.0
 
 require (
 	github.com/gin-gonic/gin v1.11.0
